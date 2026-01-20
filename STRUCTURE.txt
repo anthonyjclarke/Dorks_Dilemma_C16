@@ -1,0 +1,313 @@
+================================================================================
+DORK'S DILEMMA - Code Structure Diagram
+================================================================================
+
+BUILD ORDER (as included in dorks_dilemma.asm):
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ SYSTEM LAYER - Hardware & Memory Definitions                           │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── MAINVARS.TXT ──────── TED chip registers ($FF00-$FF3F)
+  │                         Screen buffer pointers
+  │
+  ├── MACROS.TXT ────────── Assembly macros
+  │                         dpinc/dpdec (16-bit operations)
+  │
+  ├── VARS.TXT ──────────── Zero page variables ($02-$9F)
+  │                         Game state, positions, counters
+  │
+  └── EXTRAMEM.TXT ──────── System memory tables ($0200-$02FF)
+                            Jigsaw, rooms, radar, aliens, high scores
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ ENTRY POINT - Program Start                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+  └── ROOMSOFP.TXT ──────── Main program start ($1960)
+                            Initialize message pointer
+                            Jump to gloppy (title screen)
+                            Game configuration bytes:
+                            - sndflg (sound on/off)
+                            - joysel (joystick/keyboard)
+                            - level (difficulty)
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ CORE GAME LOOP                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+  └── PLAYGAME.TXT ──────── play: Game initialization
+                            loop: Main game loop
+                            ├── deadck (check if player died)
+                            ├── comand (check escape/edit)
+                            ├── basbom (bomb explosion)
+                            ├── roomon (room transition)
+                            ├── radar (update mini-map)
+                            └── mveali (move aliens)
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ INPUT LAYER                                                             │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── JOYSTIK.TXT ───────── Read joystick port 1
+  ├── KEYSCAN.TXT ───────── Keyboard matrix scanning
+  └── INKEY.TXT ─────────── Key scanning utilities
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ TIMING & INTERRUPTS                                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── IRQ.TXT ───────────── Interrupt handler setup (setirq)
+  │                         IRQ service routine
+  └── RASTERRO.TXT ──────── Raster interrupt effects
+                            TED register manipulation
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ DISPLAY SYSTEM                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── SETUP.TXT ─────────── TED initialization
+  │                         Character set setup ($3800)
+  │                         Multicolor mode
+  │
+  ├── DECODER.TXT ───────── Screen decompression
+  │                         Expand compressed room data
+  │
+  ├── SCREENIN.TXT ──────── Screen initialization
+  │
+  ├── BORDER.TXT ────────── Print screen borders
+  │
+  ├── ANIMATEC.TXT ──────── Character animation system
+  │
+  ├── DUMPER.TXT ────────── Screen fade-in effects
+  │
+  └── MESSAGES.TXT ──────── Scrolling message system
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ PLAYER SYSTEM                                                           │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── MOVEPIXE.TXT ──────── Player movement (LARGEST MODULE - 4625 bytes)
+  │                         Pixel-level positioning
+  │                         Collision detection
+  │                         Screen character updates
+  │
+  ├── CHECKMAN.TXT ──────── Player collision checking
+  │                         Wall detection
+  │                         Object interaction
+  │
+  └── CHANGERO.TXT ──────── Room transition logic
+                            Screen edge detection
+                            New room loading
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ ENEMY AI SYSTEM                                                         │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── ALIENSME.TXT ──────── Alien movement logic
+  │                         AI pathfinding
+  │                         Pattern behaviors
+  │
+  ├── ALIENCHE.TXT ──────── Alien collision & rendering
+  │                         Check player contact
+  │                         Print alien sprites
+  │
+  ├── VARIETY.TXT ───────── Alien character variations
+  │                         Different enemy types
+  │
+  └── KILLERCO.TXT ──────── Alien death logic
+                            Kill sequences
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ GAME OBJECTS                                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── JIGSAWCO.TXT ──────── Jigsaw puzzle mechanics
+  │                         Piece collection
+  │                         Room-to-piece mapping
+  │
+  ├── EDITJIGS.TXT ──────── Jigsaw editor (debug feature)
+  │
+  ├── SCATTER.TXT ───────── Scatter jigsaw pieces
+  │                         Random distribution
+  │
+  ├── BOMBCODE.TXT ──────── Bomb placement & logic
+  │                         Explosion triggers
+  │
+  └── FILLERBO.TXT ──────── Bomb explosion fill effects
+                            Screen area fill
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ UI & FEEDBACK                                                           │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── RADARSCA.TXT ──────── Mini-map radar display
+  │                         5x5 room grid
+  │                         Current position marker
+  │
+  ├── SCOREROU.TXT ──────── Score display routines
+  │
+  ├── HALLOFFA.TXT ──────── High score table data
+  │
+  ├── HIGHPRIN.TXT ──────── High score printing (3305 bytes)
+  │
+  ├── WORKHIGH.TXT ──────── High score management
+  │                         Score sorting & storage
+  │
+  ├── MAGNIFIC.TXT ──────── Title screen loop
+  │                         Attract mode
+  │
+  └── TITLEWOR.TXT ──────── Title screen border effects
+                            Scrolling/animation
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ GAME STATE MANAGEMENT                                                   │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── INITROOM.TXT ──────── Room initialization
+  │                         Set up room data
+  │                         Place objects
+  │
+  ├── DEATHCOD.TXT ──────── Player death sequence
+  │                         Life loss
+  │                         Respawn logic
+  │
+  ├── GAMEOVER.TXT ──────── Game over sequence
+  │                         Final score
+  │                         High score entry
+  │
+  ├── LEVELINC.TXT ──────── Level progression
+  │                         Difficulty increase
+  │
+  ├── ALTERABL.TXT ──────── Configurable parameters
+  │                         Joystick/keyboard selection
+  │                         Game speed settings
+  │
+  └── WHOOPPEE.TXT ──────── Victory messages
+                            Completion sequences
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│ UTILITIES & SUPPORT                                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+  ├── UTILS.TXT ─────────── General utility routines
+  │                         Helper functions
+  │
+  ├── TABLES.TXT ────────── Lookup tables
+  │                         Pre-calculated values
+  │
+  ├── COMMAND.TXT ───────── Escape/edit command handling
+  │                         Debug menu
+  │
+  └── HEXER.TXT ─────────── Hex conversion utilities
+                            (Commented out in final build)
+
+================================================================================
+
+MEMORY MAP:
+================================================================================
+
+$0000 ┌──────────────────────┐
+      │ 6502 Stack & System  │
+$0002 ├──────────────────────┤ ◄── VARS.TXT
+      │ Zero Page Variables  │     All game state here for speed
+      │ (158 bytes used)     │     Player pos, aliens, counters, etc.
+$00A0 ├──────────────────────┤
+      │ System Use           │
+$0200 ├──────────────────────┤ ◄── EXTRAMEM.TXT
+      │ jignum (25 bytes)    │     Room tables
+      │ romnum (25 bytes)    │     Radar buffer
+      │ radbuf (25 bytes)    │     Alien animations
+      │ alibuf (64 bytes)    │     Jigsaw flags
+      │ gotbit (25 bytes)    │     High scores
+      │ histbl (80 bytes)    │
+$02F4 ├──────────────────────┤
+      │ System Use           │
+$0400 ├──────────────────────┤
+      │ Screen Buffer        │     960 bytes visible screen
+      │ (40x24 chars)        │     Text mode display
+$07C0 ├──────────────────────┤
+      │ Free Memory          │
+$1000 ├──────────────────────┤
+      │ Compressed Screen    │     Room data (compressed)
+      │ Data (scdata)        │
+      ├──────────────────────┤
+      │ Free for Use         │
+$1960 ├══════════════════════┤ ◄── PROGRAM START (ROOMSOFP.TXT)
+      │                      │
+      │   Game Code          │     All 44 modules assembled here
+      │   (~12KB)            │     Sequential in memory
+      │                      │
+$4960 ├──────────────────────┤ ◄── Approximate end of code
+      │ Free Memory          │
+$3800 ├──────────────────────┤
+      │ Character Set        │     2KB multicolor character set
+      │ (256 chars × 8 bytes)│     Loaded from CHARS.BIN
+$4000 ├──────────────────────┤
+      │ System / Free        │
+$FF00 ├──────────────────────┤
+      │ TED Chip Registers   │ ◄── MAINVARS.TXT definitions
+      │ Hardware I/O         │     Sound, video, timers, joystick
+$FF3F └──────────────────────┘
+
+================================================================================
+
+DATA FLOW:
+================================================================================
+
+┌─────────────┐
+│  Player     │
+│  Input      │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  JOYSTIK / KEYSCAN / INKEY      │ ◄── Read hardware
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  MOVEPIXE                       │ ◄── Process movement
+│  (Check collision, update pos)  │
+└──────┬──────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  CHECKMAN                       │ ◄── Validate move
+│  (Wall check, objects)          │
+└──────┬──────────────────────────┘
+       │
+       ├─────► CHANGERO ─────► New Room? ─────► DECODER ─────► Screen Update
+       │
+       ▼
+┌─────────────────────────────────┐
+│  Update Screen Buffer           │
+│  (Write to $0400)               │
+└─────────────────────────────────┘
+       │
+       ▼
+┌─────────────────────────────────┐
+│  IRQ / RASTERRO                 │ ◄── Timing & effects
+│  (Update display)               │
+└─────────────────────────────────┘
+
+PARALLEL PROCESSES (IRQ-driven):
+┌─────────────────────────────────┐
+│  ALIENSME → Move Aliens         │
+│  ANIMATEC → Animate Characters  │
+│  RADARSCA → Update Radar        │
+│  BOMBCODE → Check Explosions    │
+└─────────────────────────────────┘
+
+================================================================================
+
+MODULE SIZE BREAKDOWN:
+================================================================================
+
+Largest Modules (by bytes):
+  1. MOVEPIXE.TXT  - 4625 bytes  (Player movement - most complex)
+  2. VARS.TXT      - 4472 bytes  (Variable definitions)
+  3. DESIGNER.TXT  - 4311 bytes  (Level editor - not in main build)
+  4. VARIETY.TXT   - 3599 bytes  (Alien variations)
+  5. HIGHPRIN.TXT  - 3305 bytes  (High score display)
+
+Most Critical Modules:
+  - PLAYGAME.TXT  (Main loop)
+  - MOVEPIXE.TXT  (Player control)
+  - IRQ.TXT       (Timing)
+  - DECODER.TXT   (Screen data)
+  - ALIENSME.TXT  (Enemy AI)
+
+================================================================================
+This structure represents a well-architected game for 1985, with clear
+separation of concerns and modular design that was ahead of its time.
+================================================================================

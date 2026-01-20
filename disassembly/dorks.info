@@ -1,0 +1,8 @@
+# da65 info file for DORKSDIL.BIN
+# Simplified - just mark the code range
+
+# Main program entry
+LABEL { NAME "START"; ADDR $1960; };
+
+# Code range
+RANGE { START $1960; END $4800; TYPE Code; };

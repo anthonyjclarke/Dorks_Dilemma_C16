@@ -1,0 +1,73 @@
+0 "ROOMS OF PERIL  " MP 2A
+10   "ALIEN-CHEK/PRINT" SEQ         ALIENCHE TXT     2816   7-10-92  17:01
+12   "ALIENS-MEGA/CODE" SEQ         ALIENSME TXT     3188   7-10-92  17:01
+14   "ANIMATE-CHARS"    SEQ         ANIMATEC TXT     3887   7-10-92  17:01
+14   "BOMB-CODE"        SEQ         BOMBCODE TXT     3836   7-10-92  17:01
+3    "BORDER"           SEQ         BORDER   TXT      750   7-10-92  17:01
+9    "CHANGE-ROOM"      SEQ         CHANGERO TXT     2485   7-10-92  17:01
+4    "CHECK-MAN"        SEQ         CHECKMAN TXT     1105   7-10-92  17:01
+2    "COMMAND"          SEQ         COMMAND  TXT      455   7-10-92  17:01
+12   "DECODER"          SEQ         DECODER  TXT     3316   7-10-92  17:01
+15   "DESIGNER"         SEQ         DESIGNER TXT     4311   7-10-92  17:02
+7    "DUMPER"           SEQ         DUMPER   TXT     1885   7-10-92  17:02
+11   "EDIT-JIGSAW"      SEQ         EDITJIGS TXT     2876   7-10-92  17:02
+10   "FILLER-BOMB"      SEQ         FILLERBO TXT     1288   7-10-92  17:02
+2    "HALL-OF-FAME"     SEQ         HALLOFFA TXT      325   7-10-92  17:02
+1    "HEXER"            SEQ         HEXER    TXT      246   7-10-92  17:02
+12   "HIGH-PRINT"       SEQ         HIGHPRIN TXT     3305   7-10-92  17:02
+5    "INIT-ROOMS"       SEQ         INITROOM TXT     1188   7-10-92  17:02
+3    "INKEY"            SEQ         INKEY    TXT      829   7-10-92  17:02
+4    "IRQ"              SEQ         IRQ      TXT     1136   7-10-92  17:02
+10   "JIGSAW-CODE"      SEQ         JIGSAWCO TXT     2670   7-10-92  17:02
+3    "JOYSTIK"          SEQ         JOYSTIK  TXT      757   7-10-92  17:02
+3    "KEY-SCAN"         SEQ         KEYSCAN  TXT      738   7-10-92  17:02
+1    "MACROS"           SEQ         MACROS   TXT      193   7-10-92  17:02
+4    "MAGNIFICENT"      SEQ         MAGNIFIC TXT      928   7-10-92  17:03
+2    "MAIN-VARS"        SEQ         MAINVARS TXT      518   7-10-92  17:03
+2    "MESSAGE-STUFF"    SEQ         MESSAGES TXT      503   7-10-92  17:03
+17   "MOVE-PIXEL"       SEQ         MOVEPIXE TXT     4625   7-10-92  17:03
+3    "DES-IRQ"          SEQ         DESIRQ   TXT      808   7-10-92  17:03
+17   "VARS"             SEQ         VARS     TXT     4472   7-10-92  17:03
+6    "PLAY-GAME"        SEQ         PLAYGAME TXT     1545   7-10-92  17:03
+5    "RADAR-SCANNER"    SEQ         RADARSCA TXT     1174   7-10-92  17:03
+4    "RASTER-ROUTINES"  SEQ         RASTERRO TXT      926   7-10-92  17:03
+8    "ROOMS OF PERIL"   SEQ         ROOMSOFP TXT     2018   7-10-92  17:03
+14   "VARIETY"          SEQ         VARIETY  TXT     3599   7-10-92  17:03
+4    "SCATTER"          SEQ         SCATTER  TXT     1067   7-10-92  17:03
+3    "SETUP"            SEQ         SETUP    TXT      571   7-10-92  17:04
+1    "TABLES"           SEQ         TABLES   TXT      253   7-10-92  17:04
+6    "UTILS"            SEQ         UTILS    TXT     1590   7-10-92  17:04
+6    "SCREEN-INIT"      SEQ         SCREENIN TXT     1609   7-10-92  17:04
+1    "WHOOPPEE-MESSAGE" SEQ         WHOOPPEE TXT      227   7-10-92  17:04
+9    "CAMEL"            PRG         CAMEL    BIN     2050   7-10-92  17:04
+9    "BEEB-SET"         PRG         BEEBSET  BIN     2050   7-10-92  17:04
+1    "BOOT ALL"         PRG         BOOTALL  BAS      259   7-10-92  17:04
+2    "C16"              PRG         C16      BAS      349   7-10-92  17:04
+9    "CHARS"            PRG         CHARS    BIN     2050   7-10-92  17:04
+1    "COMP-DATA"        PRG         COMPDATA BIN       98   7-10-92  17:04
+10   "DATA-SCREENS"     PRG         DATASCRE BIN     2402   7-10-92  17:04
+4    "DOS5.2"           PRG         DOS52    BIN      866   7-10-92  17:04
+3    "DOUBLE-GENERATOR" PRG         DOUBLEGE BAS      802   7-10-92  17:04
+7    "EDITOR"           PRG         EDITOR   BIN     1626   7-10-92  17:04
+5    "ALTERABLES"       SEQ         ALTERABL TXT     1224   7-10-92  17:04
+6    "HYPRA-LOAD OBJ"   PRG         HYPRALOA BAS     6429   7-10-92  17:05
+5    "MEGA-SUPER"       PRG         MEGASUPE BIN     1026   7-10-92  17:05
+4    "SUPER-LOAD"       PRG         SUPERLOA BIN      946   7-10-92  17:05
+41   "ASM.C64"          PRG         ASMC64   BAS    44844   7-10-92  17:05
+12   "DEATH-CODE"       SEQ         DEATHCOD TXT     3209   7-10-92  17:05
+4    "GAME-OVER"        SEQ         GAMEOVER TXT      891   7-10-92  17:05
+3    "TITLE-WORKS"      SEQ         TITLEWOR TXT      755   7-10-92  17:05
+3    "SCORE-ROUTINES"   SEQ         SCOREROU TXT      674   7-10-92  17:05
+12   "WORK-HIGH"        SEQ         WORKHIGH TXT     3172   7-10-92  17:06
+3    "SWORD!"           SEQ         SWORD    TXT      734   7-10-92  17:06
+3    "EXTRA-MEMORY"     SEQ         EXTRAMEM TXT      820   7-10-92  17:06
+9    "FRAK!"            PRG         FRAK     BIN     2050   7-10-92  17:06
+7    "KILLER-CODE"      SEQ         KILLERCO TXT     1766   7-10-92  17:06
+5    "LEVEL-INCREASE"   SEQ         LEVELINC TXT     1134   7-10-92  17:06
+78   "OBJ"              SEQ         OBJ      TXT    19944   7-10-92  17:07
+8    "O.DES"            SEQ         ODES     TXT     2049   7-10-92  17:07
+3    "DES-ANI"          SEQ         DESANI   TXT      806   7-10-92  17:07
+10   "MUFF"             PRG         MUFF     BIN     2402   7-10-92  17:09
+49   "DORK'S DILEMMA"   PRG         DORKSDIL BIN    12290   7-10-92  17:10
+69 BLOCKS FREE.                            73 File(s)
+             

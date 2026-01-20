@@ -1,0 +1,49 @@
+# Build artifacts
+build/
+.pio/
+*.o
+*.prg
+*.lst
+*.map
+labels.txt
+
+# PlatformIO
+.pioenvs/
+.piolibdeps/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# VSCode
+.vscode/*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Keep certain files
+!build/.gitkeep
+!.vscode/
+
+# Don't ignore original source files
+!*.TXT
+!*.BIN
+!*.BAS
+
+# Keep documentation
+!*.md
+!*.txt

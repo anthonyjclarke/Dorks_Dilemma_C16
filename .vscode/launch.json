@@ -1,0 +1,69 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug in VICE (with monitor)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/dorks_dilemma.prg",
+            "preLaunchTask": "Build: Full (Manual)",
+            "console": "integratedTerminal",
+            "skipFiles": ["<node_internals>/**"],
+            "windows": {
+                "runtimeExecutable": "xplus4.exe"
+            },
+            "linux": {
+                "runtimeExecutable": "xplus4"
+            },
+            "osx": {
+                "runtimeExecutable": "xplus4"
+            },
+            "args": [
+                "-remotemonitor",
+                "-autostart",
+                "${workspaceFolder}/dorks_dilemma.prg"
+            ]
+        },
+        {
+            "name": "Run in VICE",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/dorks_dilemma.prg",
+            "preLaunchTask": "Build: Full (Manual)",
+            "console": "integratedTerminal",
+            "windows": {
+                "runtimeExecutable": "xplus4.exe"
+            },
+            "linux": {
+                "runtimeExecutable": "xplus4"
+            },
+            "osx": {
+                "runtimeExecutable": "xplus4"
+            },
+            "args": [
+                "-autostart",
+                "${workspaceFolder}/dorks_dilemma.prg"
+            ]
+        },
+        {
+            "name": "Run Original Binary",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/DORKSDIL.BIN",
+            "console": "integratedTerminal",
+            "windows": {
+                "runtimeExecutable": "xplus4.exe"
+            },
+            "linux": {
+                "runtimeExecutable": "xplus4"
+            },
+            "osx": {
+                "runtimeExecutable": "xplus4"
+            },
+            "args": [
+                "-autostart",
+                "${workspaceFolder}/DORKSDIL.BIN"
+            ]
+        }
+    ]
+}
