@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(# Disassemble the first part of original code echo \"\"=== Original code disassembly \\(first 48 bytes at \\\\$1960\\) ===\"\" dd if=Original_Files/DORKSDIL.BIN bs=1 skip=2402 count=48)"
+    ]
+  }
+}

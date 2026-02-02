@@ -255,9 +255,9 @@ sta mesl
 stx mesl+1
 jsr inhisc ;* set up hall tbl
 jmp gloppy
-sndflg:
-joysel:
-level:
+sndflg: .byte $01      ; sound flag (1=on)
+joysel: .byte $00      ; joystick select (0=joystick, 1=keyboard)
+level:  .byte $00      ; current level
 
 ; ==============================================================================
 ; GAME MODULES
@@ -3243,6 +3243,9 @@ cmp #$ff
 bne fillex
 lda #1
 sta stopd
+; ------------------------------------------------------------------------------
+; FILLEX - Fill Explosion Exit (Original Source from FILLERBO.TXT)
+; ------------------------------------------------------------------------------
 fillex:
 dec ay
 dec by
@@ -3250,55 +3253,93 @@ inc cy
 inc dy
 ldx #$10
 jsr delay+2
+; looks better with a delay
 dec ybomb
-bmi fillex_done
+bmi filout
 jmp fill1
-fillex_done:
-ldx #$00
+filout:
+ldx #0
 jsr delay+2
-jsr prnals
-jsr random
-jsr setup
-lda #$00
-sta bready
+jsr manded    ; man hit ?
+jsr alihit    ; any aliens hit
+jsr clexp     ; clear explosion
+lda dosfx    ; do cls screen sfx
+beq jhuys
+jsr clssnd    ; sound
+jhuys:
+lda #0
+sta dosfx
 rts
 
 ; ------------------------------------------------------------------------------
-; CHKBMB - Check Bomb Collision/Placement
+; CHKBMB - Check Bomb Collision (Original Source from FILLERBO.TXT)
 ; ------------------------------------------------------------------------------
 chkbmb:
 txa
 pha
-cpx #$00
-bcc chkbmb_fail
-cpx #$1f
-bcs chkbmb_fail
-cpy #$00
-bcc chkbmb_fail
-cpy #$17
-bcs chkbmb_fail
-lda #$71
-sta temp
+; check if co-ord out of range
+cpx #0
+bcc outran    ; out of range
+cpx #31
+bcs outran
+cpy #0
+bcc outran
+cpy #23
+bcs outran
+lda #1
+sta bomcol
 jsr xy
-ldy #$00
+ldy #0
 lda (sl),y
-cmp #$c5
-bcc chkbmb_ok
-cmp #$d1
-bcs chkbmb_ok
-chkbmb_fail:
+cmp #197
+bcc bmbok
+cmp #209
+bcs bmbok
+outran:
 pla
 tax
-sec
+sec           ; c=1 if not ok
 rts
-chkbmb_ok:
-lda #$f8
+bmbok:
+lda #248
 sta (sl),y
-lda temp
-sta colour
+lda bomcol    ; colour
+sta (cl),y
 pla
 tax
 clc
+rts
+
+; ------------------------------------------------------------------------------
+; CLEXP - Clear Explosion (Original Source from FILLERBO.TXT)
+; do a tidy up of the bits !
+; ------------------------------------------------------------------------------
+clexp:
+lda #<$0c29   ; screen buffer + offset ($0c00 + $29)
+sta sl
+lda #>$0c29
+sta sl+1
+ldx #21
+exclr1:
+ldy #30
+exclr2:
+lda (sl),y
+cmp #248      ; bomb char ?
+bne nexp
+lda #196
+sta (sl),y
+nexp:
+dey
+bpl exclr2
+lda sl
+clc
+adc #40
+sta sl
+lda sl+1
+adc #0
+sta sl+1
+dex
+bpl exclr1
 rts
 
 ; ------------------------------------------------------------------------------
