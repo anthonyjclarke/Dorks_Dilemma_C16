@@ -23,11 +23,13 @@ def main():
 
     # Read all components
     print("[1/4] Reading character set...")
-    chars_data = read_file('Original_Files/CHARS.BIN')
-    # CHARS.BIN has 2-byte header (00 38 = $3800), strip it
-    chars_load_addr = struct.unpack('<H', chars_data[:2])[0]
-    chars_data = chars_data[2:]  # Remove header
-    print(f"      Character set: {len(chars_data)} bytes, load address: ${chars_load_addr:04X}")
+    # Extract charset from the original working binary (DORKSDIL.BIN) at $3800-$3FFF
+    # CHARS.BIN standalone file has 142 byte differences from the working binary
+    orig_bin = read_file('Original_Files/DORKSDIL.BIN')
+    chars_load_addr = 0x3800
+    chars_offset_in_orig = 2 + (0x3800 - 0x1000)  # 2-byte PRG header + offset from $1000
+    chars_data = orig_bin[chars_offset_in_orig:chars_offset_in_orig + 2048]
+    print(f"      Character set: {len(chars_data)} bytes, load address: ${chars_load_addr:04X} (extracted from DORKSDIL.BIN)")
 
     print("[2/4] Reading screen data...")
     # Use screen data extracted from original DORKSDIL.BIN

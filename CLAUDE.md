@@ -335,7 +335,7 @@ acme -f cbm -o dorks_dilemma.prg dorks_dilemma.asm
 ### When Suggesting Modifications
 - Preserve zero page layout (carefully documented in VARS.TXT)
 - IRQ handler modifications require testing
-- Screen buffer at $0400 must not move
+- Screen buffer at $0C00 must not move (Plus/4 layout; original source had $0400 for C64 dev)
 - Character set at $3800 referenced throughout
 - Game loop in PLAYGAME.TXT is the coordination center
 
@@ -380,19 +380,79 @@ acme -f cbm -o dorks_dilemma.prg dorks_dilemma.asm
 
 ### Known Issues
 
-- **Address mismatch:** Rebuilt binary has routines at different addresses than original
-  - Original: inhisc=$2CAE, gloppy=$2CC3, setup=$1BF3
-  - Rebuilt: inhisc=$2C7F, gloppy=$2C94, setup=$1BE0
-  - ~47 bytes shorter due to missing data tables or padding
-- **Display rendering:** Rebuilt binary shows blank screen due to address differences
-- **Workaround:** Use original DORKSDIL.BIN for execution; source is complete for study
+- **Address mismatch (minor):** Rebuilt binary has routines ~47 bytes earlier than original
+  - Original: inhisc=$2CAE, gloppy=$2CC3
+  - Rebuilt: inhisc=$2C7F, gloppy=$2C94
+  - All internal jumps/calls use symbolic labels — code is internally correct
+  - Cause: ~47 bytes of embedded data or padding in original not yet located in source
 
-### Project Status
+### Fixed Issues (April 2026)
 
-- ✅ **Complete source code** - All routines now have original source
-- ✅ **Assembles successfully** - Zero undefined symbols with ca65
-- ✅ **Original binary works** - DORKSDIL.BIN runs perfectly in VICE
-- ⚠️ **Rebuilt binary** - Requires address alignment work for execution
+- ✅ **TED register equates bug (root cause of blank screen):**
+  All 14 hardware register aliases (`irqreg`, `irqmsk`, `rascom`, `rasthi`, `border`, `backgr`,
+  `jport`, `multi1`, `multi2`, `sou1lo`, `sou2lo`, `sou1hi`, `sou2hi`, `vol`) were converted
+  from `= ted+N` equates to `:` labels during source consolidation.
+  All resolved to $1960 (game entry point) instead of TED addresses $FF08–$FF1C.
+  Every TED write was corrupting the entry code; chip was never configured.
+  **Fix:** Lines 14–27 of `src/main_ca65.s` restored to `= ted+N` form.
+- ✅ **Charset source fixed:** `create_complete_prg.py` now extracts charset from
+  `DORKSDIL.BIN` ($3800–$3FFF) rather than `CHARS.BIN` (142-byte discrepancy).
+- ✅ **Debug symbol generation:** `build.sh` now passes `-g` and `--dbgfile` flags for
+  fresh debug info on every build.
+- ✅ **selfmd decode instruction missing:**
+  In `decode` (DECODER.TXT converted to `src/main_ca65.s`), the `selfmd` label was
+  incorrectly attached to `ldy #0`. The original source has `selfmd lda $ffff,x` as a
+  3-byte instruction immediately before `ldy #0`. Without it, the self-modifying patch
+  (lines 873, 878: `sta selfmd+1` / `sta selfmd+2`) patched the `ldy` operand and the
+  opcode of the following `lp3: asl a`, converting it to a `BPL` branch with an
+  unpredictable target. This caused an immediate code crash when `decode` was first called
+  (on pressing Space → `play` → `jmpbak` → `decode`). The crash appeared to reset the
+  title screen instantly, so pressing Space looked like "no effect."
+  **Fix:** Inserted `lda $ffff,x` between `selfmd:` and `ldy #0` at line ~898 of
+  `src/main_ca65.s`. Verified in binary: selfmd assembles to `BD FF FF` (3-byte
+  `LDA $FFFF,X`), so `selfmd+1`/`selfmd+2` correctly land in the operand bytes.
+- ✅ **messt / hisamp strings uppercased** to match original binary encoding.
+
+### Project Status (April 2026)
+
+- ✅ **Complete source code** — All routines present, zero undefined symbols
+- ✅ **Assembles successfully** — Zero errors with ca65
+- ✅ **TED hardware configured** — IRQ running, raster effects visible
+- ✅ **Original binary** — DORKSDIL.BIN runs perfectly as reference
+- ✅ **selfmd decode crash fixed** — decode should now produce correct room output
+- ❌ **Space bar not advancing game** — Root cause unknown; binary keyboard scan code
+  is correct (verified byte-by-byte). Possible causes: VICE keyboard focus, VICE
+  C16 keyboard emulation quirk, or glloo loop timing issue. Investigate next session.
+- ❌ **Title screen layout incorrect** — Top 3 rows show garbled/unexpected character
+  data (looks like right-panel content displaced into top-left). Main play area is black.
+  Right panel partially visible (chain-link border, "FYALIENS" text, radar grid).
+
+### Current Screen Output (April 2026)
+
+Running `xplus4 build/dorks_complete.prg` then `SYS 6496` produces the following
+title screen (game stops here, Space bar has no visible effect):
+
+```
+Rows 0-2:  Garbled custom-charset text across full width — reads as character
+           codes that appear to be the right-panel content (SCORE/LIVES/ALIENS
+           labels) rendered in the top-left area. Likely a screen-RAM addressing
+           issue in prscrn/welch/pwint routines or a wrong screen base.
+
+Rows 3-22: Entirely black (play area — expected on title screen since room
+           decode only runs after Space is pressed and play is entered).
+
+Col 33-39: Right-panel chain-link border visible with 3 horizontal dividers.
+           "FYALIENS" text visible in upper-right compartment.
+           5×5 radar mini-map with one blue square (player position) in
+           bottom-right compartment.
+
+Row 24:    Color gradient bar running left to right: pink→red→green→purple→
+           blue→yellow→olive. This confirms the raster IRQ is running
+           (messve/sludge color effects active).
+```
+
+**The rebuilt binary is NOT yet functionally equivalent to DORKSDIL.BIN.**
+The original binary works perfectly in VICE. Investigation continues.
 
 ## Notes for Future Development
 

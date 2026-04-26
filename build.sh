@@ -12,11 +12,11 @@ echo ""
 mkdir -p build
 
 echo "[1/4] Assembling source code..."
-ca65 src/main_ca65.s -o build/dorks.o -t c16
+ca65 src/main_ca65.s -o build/dorks.o -t c16 -g
 echo "      Assembly complete"
 
 echo "[2/4] Linking binary..."
-ld65 -C build/c16-final.cfg build/dorks.o -o build/dorks_final.bin 2>&1 | grep -v "Warning.*STARTUP" || true
+ld65 -C build/c16-final.cfg build/dorks.o -o build/dorks_final.bin --dbgfile build/dorks.dbg 2>&1 | grep -v "Warning.*STARTUP" || true
 echo "      Linking complete"
 
 echo "[3/4] Adding PRG header..."

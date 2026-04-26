@@ -4,16 +4,31 @@
 
 This is the complete source code for **Dork's Dilemma** (also known as "Rooms of Peril"), a Commodore C16/Plus4 game developed by Micro-Projects Ltd. for Gremlin Graphics in 1985.
 
-**Status:** ✅ Source code 100% complete with recovered missing functions but dies NOT work as original YET
+**Status:** Source reconstruction complete — assembles with zero errors — partially working in VICE (title screen renders, game loop not yet reachable)
 
 **What Works:**
-- Complete source reconstruction from 1992 archive
-- Two missing functions (`fillex` and `chkbmb`) recovered through binary reverse engineering
+- Complete source reconstruction from 1992 archive (44 original modules → single `src/main_ca65.s`)
+- Two missing functions (`fillex`, `chkbmb`) recovered through binary reverse engineering
 - 100% assembly success (ZERO undefined symbols)
-- Modern build system with automated scripts
+- Modern build system (`build.sh` + `scripts/create_complete_prg.py`)
+- TED chip correctly initialised — IRQ running, raster effects visible in VICE
+- Title screen partially renders: chain-link border, color bar, radar mini-map, right panel labels
 
-**Note on Binary Execution:**
-The original DORKSDIL.BIN works perfectly in VICE. The rebuilt binary from reconstructed source assembles successfully but has display rendering issues that require further debugging. See [docs/FINAL_STATUS.md](docs/FINAL_STATUS.md) for details.
+**What Does Not Work Yet:**
+- Pressing Space on the title screen does not advance to gameplay
+- Top 3 rows of title screen show garbled/displaced character data
+- Main play area stays black (room decode not running or not displaying)
+
+**Reference Binary:**
+`Original_Files/DORKSDIL.BIN` (12,290 bytes) runs perfectly in VICE and is the authoritative reference. The rebuilt binary `build/dorks_complete.prg` is the same size and load address but is not yet functionally equivalent.
+
+## Current Screen Output
+
+When running `xplus4 build/dorks_complete.prg` and typing `SYS 6496`, the following title screen appears and then stops (Space bar has no visible effect):
+
+![](<images/Code 2026-04-26 14.48.12.png>)
+
+The color bar at the bottom confirms the raster IRQ is running (messve/sludge routines active). The radar mini-map shows the player start position marker.
 
 **Reverse Engineering Achievement:**
 The missing functions were successfully recovered from DORKSDIL.BIN through systematic disassembly. See [docs/DISASSEMBLY_REVERSE_ENGINEERING.md](docs/DISASSEMBLY_REVERSE_ENGINEERING.md) for the complete process documentation.
@@ -265,6 +280,48 @@ echo "Build complete: DORKS_DILEMMA.prg"
 ### No Sound
 - Sound might be disabled (`sndflg` byte at $1960+)
 - TED sound registers not properly configured
+
+## Known Bugs Fixed (April 2026)
+
+### Bug 1 — TED Register Equates ($FF00-based)
+**File:** `src/main_ca65.s` lines 14–27
+**Symptom:** Blank screen, no IRQ, no display at all.
+**Cause:** During source consolidation, all 14 TED hardware register aliases (`irqreg`,
+`irqmsk`, `rascom`, `border`, `backgr`, `jport`, etc.) were converted from equates
+(`= ted+N`) to labels (`:`). All resolved to $1960 (code start) instead of
+$FF08–$FF1C. Every TED write hit game code instead of hardware.
+**Fix:** Restored to `= ted+N` form.
+
+### Bug 2 — Missing selfmd Instruction in decode
+**File:** `src/main_ca65.s` ~line 898 (inside `decode` / DECODER.TXT)
+**Symptom:** Pressing Space appeared to have no effect; game crashed silently back to title.
+**Cause:** The `selfmd` label was attached to `ldy #0`. The original DECODER.TXT has
+`selfmd lda $ffff,x` (a 3-byte instruction) immediately before `ldy #0`. The
+self-modifying code (`sta selfmd+1` / `sta selfmd+2`) patched the wrong bytes —
+the `ldy` operand and the next instruction's opcode — corrupting the `lp3` decode
+loop on first use.
+**Fix:** Inserted `lda $ffff,x` at the `selfmd:` label. Verified: opcode `BD FF FF`
+in binary, with `selfmd+1`/`selfmd+2` correctly inside the operand.
+
+## Outstanding Issues (April 2026)
+
+1. **Space bar not advancing game** — `glloo` loop checks `bit jfire; bpl glloo`.
+   Keyboard scan code is correct in binary (verified byte-by-byte). Unknown why it
+   doesn't exit. Investigate: VICE keyboard focus, C16 keyboard matrix emulation,
+   or alternative input (joystick mode via F1, or joystick in VICE settings).
+
+2. **Title screen top 3 rows garbled** — Character data appearing in wrong screen
+   positions. Likely a screen-RAM write address issue in `prscrn`/`welch`/`pwint`
+   routines. The screen base is `$0C00` (C16/Plus4 layout) but some hardcoded
+   addresses in prscrn (`$c81+40`) may be wrong for the rebuilt binary layout.
+
+3. **Play area stays black** — Room decode only runs after Space is pressed (via
+   `play` → `jmpbak` → `decode`). Once Space issue is resolved, check decode output.
+
+4. **47-byte code offset** — Rebuilt routines land ~47 bytes earlier than in the
+   original binary (`inhisc`: rebuilt $2C7F vs original $2CAE). All internal
+   jumps use labels so behavior is correct, but comparison to original disassembly
+   requires accounting for this offset. Unknown source of the 47 bytes.
 
 ## Understanding the Code
 
