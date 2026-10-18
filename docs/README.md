@@ -16,6 +16,12 @@ Complete documentation for the Dork's Dilemma source code reconstruction project
 
 ## Project Status & History
 
+### Development History and Recovered Material
+
+[Development History](DEVELOPMENT_HISTORY.md) records the Rooms of Peril development name, Gremlin Graphics' rebranding to Dork's Dilemma, Anthony Clarke's C64–1541–C16 workflow, and the disk-recovery background.
+
+[Recovered Disk and Folder Contents](RECOVERED_DISK_CONTENTS.md) inventories the supplied disk images, sequential source and object files, and PRG files. Initial tool identifications are provisional where indicated; detailed research is planned for a later revision. Earlier status reports below describe intermediate restoration stages.
+
 ### Current Status
 - **[FINAL_STATUS.md](FINAL_STATUS.md)** - Complete project status report
   - Assembly: 100% success (ZERO undefined symbols)

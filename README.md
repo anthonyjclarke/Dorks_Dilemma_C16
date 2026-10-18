@@ -2,21 +2,19 @@
 
 ## Overview
 
-This is the complete source code for **Dork's Dilemma** (also known as "Rooms of Peril"), a Commodore C16/Plus4 game developed by Micro-Projects Ltd. for Gremlin Graphics in 1985.
+This project preserves the recovered source and restoration work for **Dork's Dilemma**, a Commodore C16/Plus4 game written by Anthony Clarke at Micro-Projects Ltd. in 1985. **Rooms of Peril** was the original development name. Gremlin Graphics in Sheffield rebranded it as **Dork's Dilemma** for publication and launch.
 
-**Status:** ✅ Source code 100% complete with recovered missing functions but dies NOT work as original YET
+See [Development History](docs/DEVELOPMENT_HISTORY.md) for Anthony's account of editing and assembling on a C64, sharing a 1541 with the C16 for testing, and recovering the original disks. The [Recovered Disk and Folder Contents](docs/RECOVERED_DISK_CONTENTS.md) catalogues the supplied images, source, object records, and possible development aids. Detailed research into the individual tools is planned for a later revision.
 
-**What Works:**
-- Complete source reconstruction from 1992 archive
-- Two missing functions (`fillex` and `chkbmb`) recovered through binary reverse engineering
-- 100% assembly success (ZERO undefined symbols)
-- Modern build system with automated scripts
+These new documents record the current preservation context. The build and status reports below describe earlier restoration work; their claims of completeness have not been revalidated against the newly supplied disk images.
 
-**Note on Binary Execution:**
-The original DORKSDIL.BIN works perfectly in VICE. The rebuilt binary from reconstructed source assembles successfully but has display rendering issues that require further debugging. See [docs/FINAL_STATUS.md](docs/FINAL_STATUS.md) for details.
+**Status: Restoration in progress.** The fresh C16 disk image contains source missing from the earlier conversion, including the continuation of the bomb routine. Integration and verification of that source are still pending. Static analysis also found instructions lost during modern source conversion.
 
-**Reverse Engineering Achievement:**
-The missing functions were successfully recovered from DORKSDIL.BIN through systematic disassembly. See [docs/DISASSEMBLY_REVERSE_ENGINEERING.md](docs/DISASSEMBLY_REVERSE_ENGINEERING.md) for the complete process documentation.
+Earlier work reports successful assembly after reconstructing `fillex` and `chkbmb` from the surviving binary. Successful assembly does not establish source completeness or equivalence to the original game. The later April 2026 commit reports partial title-screen rendering and an unresolved transition into gameplay; it is not yet incorporated into this checkout.
+
+`Original_Files/DORKSDIL.BIN` is the surviving reference binary, reported by earlier project work to run in VICE. Whether it is a release or development build is unknown. No new build or emulator validation has been performed for this checkpoint.
+
+See [docs/FINAL_STATUS.md](docs/FINAL_STATUS.md) and [docs/DISASSEMBLY_REVERSE_ENGINEERING.md](docs/DISASSEMBLY_REVERSE_ENGINEERING.md) for historical investigation reports. The current restoration will compare their inferred repairs with the recovered original C16 source and establish a reproducible build before claiming a working restoration.
 
 ## Files in This Archive
 

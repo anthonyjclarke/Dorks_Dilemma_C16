@@ -44,6 +44,9 @@ ENV/
 !*.BIN
 !*.BAS
 
+# Preserve original PRG files in the recovered disk collection
+!Dorks-Dilemma-C16-2026-FullDiskCopy/*.prg
+
 # Keep documentation
 !*.md
 !*.txt

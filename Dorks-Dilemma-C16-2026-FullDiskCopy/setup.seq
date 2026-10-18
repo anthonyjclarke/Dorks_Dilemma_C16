@@ -1,0 +1,1 @@
+; >S:SETUP; PUT "SETUP";;*****************************;; INITIALISE ALL POINTERS ETC.;;*****************************;SETUP;LDA #24STA VICMEM     ;* CHARS AT $2000;LDX #3;RNL;LDA $DC00,X   ;* TIMERS AS RND #STA RND,X;DEXBPL RNL;;  *SEED;LDA #$B      ;* GREYSTA BACKGRSTA BORDER;LDA #$00STA MULTI1;LDA #$46STA MULTI2;;;;RTS;;;.END
