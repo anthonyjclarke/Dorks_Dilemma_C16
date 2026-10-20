@@ -1,136 +1,52 @@
-# Testing Guide - Dork's Dilemma C16
+# Testing the Restoration
 
-Quick reference for testing the rebuilt binary in VICE emulator.
+## Build and Regression Tests
 
-## Build First
-
-```bash
+```sh
 ./build.sh
+make test
 ```
 
-Expected output:
+The seven tests cover complete PRG equality, independently assembled executable bytes, the four explicit archive fallbacks, the recovered bomb routines, preservation of labelled instructions and register equates, failure on a missing include, and rejection of a cyclic disk-sector chain.
+
+The expected complete PRG SHA-256 is:
+
+```text
+3c6f6426b93862de9bd836842f1ffc0bc46f19056e2fc0706ca0da8037a7ce05
 ```
-Build complete!
-Output file: build/dorks.prg (7730 bytes)
-```
-
-## Run in VICE Emulator
-
-### Option 1: Direct Load and Execute
-```bash
-/usr/local/Cellar/vice/3.10/bin/xplus4 build/dorks.prg
-```
-
-In the emulator, type:
-```basic
-SYS 6496
-```
-
-### Option 2: Manual Load
-```bash
-/usr/local/Cellar/vice/3.10/bin/xplus4
-```
-
-In the emulator:
-```basic
-LOAD "build/dorks.prg",8,1
-RUN
-```
-(Note: This will try to RUN as BASIC and fail - use SYS instead)
-
-```basic
-SYS 6496
-```
-
-## Expected Behavior
-
-### ✅ Success Indicators
-- Screen clears (clear screen character sent)
-- Program initializes
-- Game graphics appear (if assets loaded)
-- No BREAK errors
-
-### ❌ Failure Indicators
-- `BREAK IN 1962` - Binary has zeros at start (build issue)
-- `SYNTAX ERROR` - Used RUN instead of SYS
-- `ILLEGAL QUANTITY ERROR` - Wrong load address
-
-## Memory Addresses Reference
-
-| Address | Decimal | Purpose |
-|---------|---------|---------|
-| $1960 | 6496 | Program entry point (SYS here) |
-| $0400 | 1024 | Screen buffer start |
-| $3800 | 14336 | Character set location |
-
-## Game Controls
-
-Once running:
-- **Keyboard:** Cursor keys + Space
-- **Joystick:** Port 1 + Button
-- **ESC:** Pause/Debug menu (if implemented)
-
-## Comparing to Original
-
-Test the working original first:
-```bash
-/usr/local/Cellar/vice/3.10/bin/xplus4 Original_Files/DORKSDIL.BIN
-SYS 6496
-```
-
-This confirms VICE is working and shows expected game behavior.
-
-## Troubleshooting
-
-### BREAK Error
-```
-BREAK IN 1962
-```
-**Cause:** Binary has wrong structure (zeros at start)
-**Fix:** Rebuild with `./build.sh` - should use c16-final.cfg
-
-### Wrong Load Address
-```
-ILLEGAL QUANTITY ERROR
-```
-**Cause:** File loaded at wrong address
-**Fix:** Use `LOAD "FILE",8,1` (the `,1` forces load at file's address)
-
-### Missing Graphics
-**Expected:** Code-only build won't have character sets or screen data
-**Solution:** This is normal - assets in separate .BIN files need integration
-
-## Current Limitations
-
-The rebuilt `build/dorks.prg` contains:
-- ✅ All executable code
-- ✅ Proper load address ($1960)
-- ✅ Complete game logic
-- ❌ Character set data (in CHARS.BIN)
-- ❌ Screen layout data (in DATASCRE.BIN)
-
-Without the assets, expect:
-- Code will execute
-- Logic will run
-- Graphics will be wrong/missing
-- Game will be playable but visually broken
-
-## Next: Asset Integration
-
-To create a complete working game, assets need to be integrated:
-
-```bash
-# Character set at $3800
-# Screen data decompressed to $1000
-# All in single PRG file
-```
-
-This requires:
-1. Loading CHARS.BIN data
-2. Loading DATASCRE.BIN data
-3. Combining into single PRG with proper memory layout
-4. Setting up character set pointer in TED chip
 
 ---
 
-**Quick Test:** Does the rebuild crash? Run `./build.sh && xplus4 build/dorks.prg` and type `SYS 6496`. No BREAK = success!
+## PlatformIO
+
+```sh
+pio run -e c16 -e c16_debug
+```
+
+Both outputs must match the direct build. The build script fails if the PRG differs from the reference, and it writes the details to the environment's `comparison.json`.
+
+---
+
+## Repeatable VICE Check
+
+```sh
+python3 scripts/verify_vice.py
+```
+
+This needs VICE with its C16 ROMs and PNG screenshot support. It boots a PAL C16 with 16 KB RAM, loads the rebuilt PRG, and stops at the original title-screen fire test. It then sets the `JFIRE` input flag, resumes the original instructions, and checks that the game reaches the main loop with the title flag cleared and three lives.
+
+The check writes `build/vice-verification.json`, the monitor and console logs, and `build/restored-title.png` and `build/restored-gameplay.png`. It has a 45-second timeout and a cycle limit, so a regression can't leave an unattended test running forever.
+
+---
+
+## Manual Checks Still Needed
+
+Launch the game:
+
+```sh
+scripts/run_vice.sh build/dorks.prg
+```
+
+Check the host-key mapping for the original controls: `Z` and `X` for left/right, `;` and `/` for up/down, and Space for fire/start. `F1` selects keyboard or joystick, and `F2` selects sound. These mappings come from the original source.
+
+Manual keyboard and joystick input, sound, movement between rooms, bombs, death and restart, and a complete play-through are all still unverified in this session, and so is testing on real hardware. The repeatable emulator check feeds in an input flag directly, so it says nothing about these behaviours.

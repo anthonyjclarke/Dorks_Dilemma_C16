@@ -2,196 +2,125 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
             "label": "PlatformIO: Build",
-            "type": "shell",
+            "type": "process",
             "command": "pio",
-            "args": ["run"],
+            "args": [
+                "run",
+                "-e",
+                "c16"
+            ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            },
-            "problemMatcher": []
+            }
         },
         {
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
             "label": "PlatformIO: Clean",
-            "type": "shell",
+            "type": "process",
             "command": "pio",
-            "args": ["run", "--target", "clean"],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            }
+            "args": [
+                "run",
+                "-e",
+                "c16",
+                "--target",
+                "clean"
+            ]
         },
         {
-            "label": "PlatformIO: Upload (Run in VICE)",
-            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "label": "PlatformIO: Run in VICE",
+            "type": "process",
             "command": "pio",
-            "args": ["run", "--target", "upload"],
-            "group": "test",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            },
-            "dependsOn": ["PlatformIO: Build"]
-        },
-        {
-            "label": "Build: Assemble only",
-            "type": "shell",
-            "command": "ca65",
             "args": [
-                "-t", "c16",
-                "-g",
-                "-l", "${workspaceFolder}/build/main.lst",
-                "-o", "${workspaceFolder}/build/main.o",
-                "${workspaceFolder}/src/main.s"
-            ],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "problemMatcher": {
-                "owner": "ca65",
-                "fileLocation": ["relative", "${workspaceFolder}"],
-                "pattern": {
-                    "regexp": "^(.*)\\((\\d+)\\):\\s+(Error|Warning):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "severity": 3,
-                    "message": 4
-                }
-            }
+                "run",
+                "-e",
+                "c16",
+                "--target",
+                "upload"
+            ]
         },
         {
-            "label": "Build: Link",
-            "type": "shell",
-            "command": "ld65",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "label": "Build: Recovered C16",
+            "type": "process",
+            "command": "python3",
             "args": [
-                "-t", "c16",
-                "-o", "${workspaceFolder}/dorks_dilemma.prg",
-                "-Ln", "${workspaceFolder}/build/labels.txt",
-                "-m", "${workspaceFolder}/build/map.txt",
-                "${workspaceFolder}/build/main.o"
-            ],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "shared"
-            },
-            "dependsOn": ["Build: Assemble only"],
-            "problemMatcher": []
+                "scripts/restore_c16.py"
+            ]
         },
         {
-            "label": "Build: Full (Manual)",
-            "type": "shell",
-            "command": "bash",
-            "args": [
-                "-c",
-                "mkdir -p build && ca65 -t c16 -g -l build/main.lst -o build/main.o src/main.s && ld65 -t c16 -o dorks_dilemma.prg -Ln build/labels.txt -m build/map.txt build/main.o"
-            ],
-            "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
+            "options": {
+                "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": []
-        },
-        {
+            "problemMatcher": [],
             "label": "Run: VICE Emulator",
-            "type": "shell",
-            "command": "xplus4",
+            "type": "process",
+            "command": "python3",
             "args": [
-                "-autostart",
-                "${workspaceFolder}/dorks_dilemma.prg"
+                "scripts/run_vice.py",
+                "build/dorks.prg"
             ],
-            "group": "test",
-            "presentation": {
-                "reveal": "never",
-                "panel": "shared"
-            },
-            "dependsOn": ["Build: Full (Manual)"]
+            "dependsOn": "Build: Recovered C16"
         },
         {
-            "label": "Run: VICE with Monitor",
-            "type": "shell",
-            "command": "xplus4",
-            "args": [
-                "-remotemonitor",
-                "-autostart",
-                "${workspaceFolder}/dorks_dilemma.prg"
-            ],
-            "group": "test",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
+            "options": {
+                "cwd": "${workspaceFolder}"
             },
-            "dependsOn": ["Build: Full (Manual)"]
-        },
-        {
+            "problemMatcher": [],
             "label": "Run: Original Binary",
-            "type": "shell",
-            "command": "xplus4",
+            "type": "process",
+            "command": "python3",
             "args": [
-                "-autostart",
-                "${workspaceFolder}/DORKSDIL.BIN"
-            ],
-            "group": "test",
-            "presentation": {
-                "reveal": "never",
-                "panel": "shared"
-            }
+                "scripts/run_vice.py",
+                "Original_Files/DORKSDIL.BIN"
+            ]
         },
         {
-            "label": "View: Build Map",
-            "type": "shell",
-            "command": "cat",
-            "args": ["${workspaceFolder}/build/map.txt"],
-            "group": "none",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "View: Labels",
-            "type": "shell",
-            "command": "cat",
-            "args": ["${workspaceFolder}/build/labels.txt"],
-            "group": "none",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "View: Listing",
-            "type": "shell",
-            "command": "cat",
-            "args": ["${workspaceFolder}/build/main.lst"],
-            "group": "none",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "Tools: Check cc65 Installation",
-            "type": "shell",
-            "command": "bash",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "label": "Test: Restoration",
+            "type": "process",
+            "command": "python3",
             "args": [
-                "-c",
-                "echo 'Checking cc65 tools...' && ca65 --version && ld65 --version && echo 'Checking VICE...' && xplus4 --version"
+                "-m",
+                "unittest",
+                "discover",
+                "-s",
+                "test",
+                "-p",
+                "test_*.py",
+                "-v"
+            ]
+        },
+        {
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "label": "Test: VICE Gameplay",
+            "type": "process",
+            "command": "python3",
+            "args": [
+                "scripts/verify_vice.py"
             ],
-            "group": "none",
-            "presentation": {
-                "reveal": "always",
-                "panel": "dedicated"
-            }
+            "dependsOn": "Build: Recovered C16"
         }
     ]
 }

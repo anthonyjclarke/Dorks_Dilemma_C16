@@ -1,0 +1,44 @@
+{
+  "supplied_by": "Anthony Clarke",
+  "added_on": "2026-10-20",
+  "scrapbook": {
+    "file": "Scrapbook - C16.pdf",
+    "pages": 17,
+    "sha256": "af5ce90f56f16bbe9c97a0bd20b25c6fed867c90d2aad40af093d29fcc6f6dd0"
+  },
+  "assets": [
+    {
+      "file": "cover-art-scan.jpg",
+      "source_file": "Dorks Dilemma Image.jpg",
+      "method": "Unmodified file copy",
+      "sha256": "06060790d807ab55b36d4d80fdb97076513e2ab9a50a4a0a0c6e5275afccbeb8"
+    },
+    {
+      "file": "cassette-inlay.jpg",
+      "source_file": "Dorks Dilemma Cassette Inlay.jpg",
+      "method": "Unmodified file copy",
+      "sha256": "0d80088b728e65dba5c946b57d6f35f6a7f7bfb47b4312f8dbd7c6ab704b84f5"
+    },
+    {
+      "file": "cassette-reverse.jpg",
+      "source_file": "dorks_dilemma_side.jpg",
+      "method": "Unmodified file copy",
+      "sha256": "004a1b0f004017af39a41067963de4030142b29cdf49361c846ecd9f918f8717"
+    },
+    {
+      "file": "your-computer-1985-08-scrapbook-p12.jpg",
+      "source_file": "Scrapbook - C16.pdf",
+      "pdf_page": 12,
+      "method": "Complete PDF page rendered at scale 2 (144 dpi), RGB JPEG quality 94; no crop or retouching",
+      "sha256": "b2e0bec4a2bc9a6326388dfaa95dc195b91d09588429b93d3693f6bf73ae9968"
+    },
+    {
+      "file": "computer-gamer-1986-06-scrapbook-p15.jpg",
+      "source_file": "Scrapbook - C16.pdf",
+      "pdf_page": 15,
+      "method": "Complete PDF page rendered at scale 2 (144 dpi), RGB JPEG quality 94; no crop or retouching",
+      "sha256": "3f2bf085d97818129b8214b09d07fd8948560fddbc147dbcb84fc222079aa05b"
+    }
+  ],
+  "selection_note": "Retains one cover scan, full inlay and reverse panel, plus two review pages. Similar cover variants and smaller repeated inlay images are omitted."
+}

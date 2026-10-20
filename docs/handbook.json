@@ -1,0 +1,40 @@
+{
+    "output": "docs/DORKS_DILEMMA.html",
+    "groups": [
+        {
+            "id": "guide",
+            "label": "Project guide",
+            "sources": [
+                "README.md",
+                "docs/DEVELOPMENT_HISTORY.md",
+                "docs/PUBLICATION_ARCHIVE.md",
+                "QUICKSTART.md",
+                "docs/SOURCE_TO_VICE.md",
+                "docs/PLATFORMIO_GUIDE.md",
+                "docs/RESTORATION_STATUS.md",
+                "TESTING.md",
+                "CODEBASE_ANALYSIS.md",
+                "docs/RECOVERED_DISK_CONTENTS.md"
+            ]
+        },
+        {
+            "id": "reference",
+            "label": "Reference and maintenance",
+            "sources": [
+                "PROJECT_STATUS.md",
+                "docs/README.md",
+                "src/README.md",
+                "docs/analysis/README.md",
+                "docs/HTML_DOCUMENTATION.md",
+                "docs/analysis/CODE_REFERENCE.md"
+            ]
+        },
+        {
+            "id": "history",
+            "label": "Historical investigation reports",
+            "historical": true,
+            "sources": ["PROJECT_SETUP.md"],
+            "discover": "docs/*.md"
+        }
+    ]
+}

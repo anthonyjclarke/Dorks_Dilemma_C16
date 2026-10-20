@@ -39,7 +39,7 @@ indent_size = 2
 # Markdown files
 [*.md]
 indent_style = space
-indent_size = 2
+indent_size = 4
 trim_trailing_whitespace = false
 
 # Makefiles always use tabs
