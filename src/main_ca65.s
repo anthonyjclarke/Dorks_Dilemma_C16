@@ -11,20 +11,20 @@
 ; main system variables
 
 ted    = $ff00
-irqreg:
-irqmsk:
-rascom:
-rasthi:
-border:
-backgr:
-jport:
-multi1:
-multi2:
-sou1lo:
-sou2lo:
-sou1hi:
-sou2hi:
-vol:
+irqreg = ted+9
+irqmsk = ted+10
+rascom = ted+11
+rasthi = ted+$1c
+border = ted+$19
+backgr = ted+$15
+jport  = ted+8
+multi1 = ted+$16
+multi2 = ted+$17
+sou1lo = ted+14
+sou2lo = ted+15
+sou1hi = ted+18
+sou2hi = ted+16
+vol    = ted+17
 
 scrbuf = $0c00
 ; buffer (screen size) 0c00-0fbf (Plus/4 screen location)
@@ -896,6 +896,7 @@ lda sl+1
 pha
 lp2:
 selfmd:
+lda $ffff,x ;* self-modified: operand becomes actual screen data address
 ldy #0
 lp3:
 asl a
@@ -3621,7 +3622,7 @@ rts
 
 ; ------------------------------------------------------------------------------
 hisamp:
-.byte "000100  gremlin "
+.byte "000100  GREMLIN "
 inhisc:
 ; init the hiscore tables
 ldy #0
@@ -4938,10 +4939,8 @@ lvlovr:
 
 ; ------------------------------------------------------------------------------
 messt:
-.byte "     dorks dilemma "
-.byte "by micro "
-.byte "projects ltd have you played xargon wars"
-.byte " ; petals of doom or tycoon tex ?"
+.byte "     DORKS DILEMMA BY MICRO PROJECTS LTD HAVE YOU PLAYED XARGON WARS"
+.byte ";PETALS OF DOOM OR TYCOON TEX ?"
 .byte $ff
 
 ; .end removed
