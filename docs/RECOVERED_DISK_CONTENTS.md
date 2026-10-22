@@ -4,7 +4,7 @@
 
 This is a first catalogue of `Dorks-Dilemma-C16-2026-FullDiskCopy/`, which I supplied as recovered development-disk material. It lists what is there and the file roles that inspection supports so far. Closer research into the programs, how they work, and whether they turn up on other game disks is planned for a later revision.
 
-The folder holds 75 files: three `.d64` disk images, 53 `.seq` files, and 19 `.prg` files. That is a count of the host folder, not a directory listing of one physical disk. It's still unclear how the loose files relate to each image.
+The folder holds 75 files: three `.d64` disk images, 53 `.seq` files, and 19 `.prg` files. That is a count of the host folder, not a directory listing of one physical disk. The loose files match the C64 development disk, `DISK1B` in my 1992 export, by CRC-32 and size, apart from six BASIC programs that the export holds as listings. [Gremlin Archive and the Book](GREMLIN_ARCHIVE.md#in-this-project) has the comparison.
 
 I recall that many of these programs also appear on my other source disks, and I suspect they were development aids. That will guide later comparisons, but a repeated filename alone doesn't show that two files have the same contents or purpose.
 
