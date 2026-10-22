@@ -6,7 +6,7 @@ This document explains how the working game fits together, for anyone who wants 
 
 The authentic C16 restoration is the reference. A new version can change the rules, presentation, controls, or platform, as long as it's clear which behaviour came from the original and which was changed on purpose. The current restoration build stays as the reproducible baseline. There is no separate development source tree or build target for modified versions yet.
 
-This analysis was updated on 20 October 2026 against the recovered source, the generated assembly, the linker map, and the current restoration scripts. [Restoration Status](docs/RESTORATION_STATUS.md) has the verification evidence and [Source to VICE](docs/SOURCE_TO_VICE.md) has the build instructions.
+This analysis was updated on 20 October 2026 against the recovered source, the generated assembly, the linker map, and the current restoration scripts. [Source and Validation](docs/SOURCE_AND_VALIDATION.md) has the verification evidence and [Build and Run](docs/BUILD_AND_RUN.md) has the build instructions.
 
 Read it alongside the [generated code reference](docs/analysis/CODE_REFERENCE.md), the [machine-readable index](docs/analysis/codebase-index.json), and the [extracted asset data](docs/analysis/asset-data.json). The reference lists every active module, where it came from, the zero-page allocations, and the symbols with their addresses and logical source-line numbers. Treat these as navigation aids: a label isn't necessarily a function, and static transfers don't cover every path the game can take at runtime.
 
@@ -24,7 +24,7 @@ Dork's Dilemma is a room-based action game built around a 5 × 5 room grid, jigs
 
 I wrote the game at Micro-Projects Ltd. under the development name **Rooms of Peril**. Gremlin Graphics in Sheffield renamed it **Dork's Dilemma** when it published and launched the game in 1985. The main source gives 5 March 1985 as the start of development.
 
-The development machine was a C64 with a 1541 drive. Source was edited and assembled on that machine, then loaded and tested on the C16 through the shared, daisy-chained drive. The recovered assembler calls itself Commodore's resident assembler. It has a BASIC startup stub, but that doesn't make it an assembler written in BASIC. Parts of the historical workflow are still pieced together from the files. See [Development History](docs/DEVELOPMENT_HISTORY.md).
+The development machine was a C64 with a 1541 drive. Source was edited and assembled on that machine, then loaded and tested on the C16 through the shared, daisy-chained drive. The recovered assembler calls itself Commodore's resident assembler. It has a BASIC startup stub, but that doesn't make it an assembler written in BASIC. Parts of the historical workflow are still pieced together from the files. See [History and Credits](docs/HISTORY_AND_CREDITS.md).
 
 The earlier text conversion probably dates from 1992, going by my recollection and the surviving index timestamps. It shouldn't be called a confirmed studio archival process. Whether the surviving reference binary is a release or a development build is unknown.
 
@@ -49,18 +49,18 @@ VICE checks have confirmed that the title screen renders and that the game reach
 
 ## Repository and Source Organization
 
-The active build starts from `Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64`, whose live directory has 66 files. It follows the original `ROOMS OF PERIL` `.LIB` directives and doesn't assemble the loose files beside the image or the earlier consolidated files in `src/`.
+The active build starts from `Original Source Recovered/2026/Dorks-Dilemma-C16.d64`, whose live directory has 66 files. It follows the original `ROOMS OF PERIL` `.LIB` directives and doesn't assemble the loose files beside the image or the earlier consolidated source, which now lives outside the repository.
 
 The image has the full continuation of `FILLER-BOMB`, including `FILLEX`, `CHKBMB`, and `CLEXP`, so the build now uses original source for these routines instead of the earlier guessed versions.
 
-Four active include references have no matching live directory entry. The build supplies their surviving older copies explicitly:
+Four active include references have no matching live directory entry. The build supplies their surviving older copies explicitly from `Original Source Recovered/1992/`:
 
-| Original disk module | Earlier source input          |
-| -------------------- | ----------------------------- |
-| `RASTER-ROUTINES`    | `Original_Files/RASTERRO.TXT` |
-| `ALIENS-MEGA/CODE`   | `Original_Files/ALIENSME.TXT` |
-| `ALIEN-CHEK/PRINT`   | `Original_Files/ALIENCHE.TXT` |
-| `WHOOPPEE-MESSAGE`   | `Original_Files/WHOOPPEE.TXT` |
+| Original disk module | Earlier source input (`1992/`) |
+| -------------------- | ------------------------------ |
+| `RASTER-ROUTINES`    | `RASTERRO.TXT`                 |
+| `ALIENS-MEGA/CODE`   | `ALIENSME.TXT`                 |
+| `ALIEN-CHEK/PRINT`   | `ALIENCHE.TXT`                 |
+| `WHOOPPEE-MESSAGE`   | `WHOOPPEE.TXT`                 |
 
 Those text exports are converted to upper case for assembly. Matching the full program region checks the resulting instructions and embedded data against the reference, but it doesn't recover the missing modules' original disk-file bytes.
 
@@ -100,7 +100,7 @@ The [generated reference](docs/analysis/CODE_REFERENCE.md#modules-in-assembly-or
 
 `build/labels.txt`, `build/map.txt`, and `build/dorks.dbg` tie labels to memory. `build/recovery-manifest.json` has the input provenance and hashes, and `build/comparison.json` has the reference comparison and the graphics dependency. All of these are generated, and `./build.sh` recreates them.
 
-The older `src/main.s`, `src/main_ca65.s`, and repair routines are still useful for following the restoration history, but they have known conversion defects and aren't build inputs. Editing them won't change the current output. See [the source-folder note](src/README.md).
+The earlier hand-consolidated source (`main.s`, `main_ca65.s` and the guessed repair routines) has known conversion defects and was never a build input. I moved it out of the repository on 23-10-2026; it stays in Git history, and [History and Credits](docs/HISTORY_AND_CREDITS.md#recovery-background-and-build-template) explains how that first approach led to the current one. See [the source-folder note](src/README.md).
 
 ---
 
@@ -125,7 +125,7 @@ flowchart LR
 
 PlatformIO's `c16` and `c16_debug` environments produce the same game bytes under their own `build/platformio/` directories, and the debug information doesn't change the program. PlatformIO only uses the native platform as a build context for the custom assembly pipeline, so the game doesn't become a native host executable.
 
-The VICE launcher waits for initialization, loads the PRG at its saved address, and enters at `$1960`. The PRG has no BASIC `RUN` stub. The [PlatformIO Guide](docs/PLATFORMIO_GUIDE.md) has the current commands.
+The VICE launcher waits for initialization, loads the PRG at its saved address, and enters at `$1960`. The PRG has no BASIC `RUN` stub. [Build and Run](docs/BUILD_AND_RUN.md) has the current commands.
 
 ---
 
@@ -293,7 +293,7 @@ When tuning difficulty, follow the values into their counters and comparisons. A
 
 `DESIGNER`, `DES-IRQ`, and `DES-ANI` belong to the separate screen-design tool and aren't in the main game's active include chain. `HEXER` is commented out in the main source. These programs need their own build and testing before anyone treats them as working modern editing tools.
 
-The disk's `EDITOR` program is the Commodore source editor, not the game's level editor. `OBJ` and `O.DES` are hexadecimal object records, not assembly source. PRG files can hold tools, BASIC, or data, and [Recovered Disk and Folder Contents](docs/RECOVERED_DISK_CONTENTS.md) catalogues their roles separately.
+The disk's `EDITOR` program is the Commodore source editor, not the game's level editor. `OBJ` and `O.DES` are hexadecimal object records, not assembly source. PRG files can hold tools, BASIC, or data, and [Source Inventory](docs/SOURCE_INVENTORY.md) catalogues their roles separately.
 
 ---
 
@@ -327,109 +327,9 @@ The room count feeds into initialization, navigation, the radar, jigsaw assignme
 
 ---
 
-## Game Graphics, Assembly, and Screen Display
+## Game Graphics
 
-The current build takes screen data from `MUFF` and the final character set from the reference binary's `$3800–$3FFF` region. Standalone `CHARS` differs in 142 bytes, so producing the final graphics without the reference, from the other assets and utilities, is still a research task. No executable code is copied from the reference.
-
-Character bitmaps, character-screen codes, text encodings, and display attributes are four different representations, and a new platform needs explicit conversions between them. Collision and explosion routines also read character values, so a visual redesign can change gameplay unless those rules are kept apart from the renderer.
-
-Alternative character sets and support programs survive on the disk, but their names don't say what they were used for in production. Work out how they relate to the final game assets before a new edition depends on them.
-
-### How to Read the Graphics Sheets
-
-The images below rebuild named game graphics from the **verified PRG's bytes and assembled data tables**, keeping the tile order the drawing routines use. `scripts/game_graphics.py` generates them when `scripts/analyze_codebase.py` runs. They aren't artist impressions, and they aren't guessed from asset filenames.
-
-In the multicolour previews, each byte holds four two-bit samples, shown as four pairs of horizontal screen dots. The four inspection colours stand for the values `00`, `01`, `10`, and `11`. They match the index colours of the existing multicolour atlas on purpose and don't try to emulate the TED palette. The one-bit previews show eight separate dots per byte. The annotated VICE screenshot below shows how the game really looks. The sheets explain the shapes and storage underneath.
-
-### Main Character: Dork
-
-![Dork's four stationary frames and eight movement blocks assembled from the original bytes](docs/analysis/game-player.svg)
-
-The stationary character is a **2 × 2 tile image**, occupying 16 × 16 screen dots. `BALMAN` in `ANIMATE-CHARS` stores four frames of 32 bytes each: eight bytes for the top-left tile, eight for the top-right, then the bottom-left and bottom-right. `MANGLP` copies the chosen frame into `$38E0–$38FF`, which defines character codes 28–31. Its counter visits frames 0, 1, 2, 3, then alternates 2 and 3 while the idle animation continues. `GLOPTM` controls the interval; these are not four frames displayed on every interrupt.
-
-`PRINT` in `MOVE-PIXEL` selects a different representation while moving. Horizontal phases use codes **148–171** in four consecutive six-character groups, placed in a **3 × 2** rectangle using `WALY = 0,1,2,40,41,42`. Vertical phases use codes **172–195** in four six-character groups, placed in a **2 × 3** rectangle using `YVAL2 = 0,1,40,41,80,81`. `TIME6 = 0,6,12,18` selects the group from `XPIX` or `YPIX`. The wider or taller blocks leave space for the shifted image; the entire block is not solid character artwork.
-
-At a cell boundary, `NORMPR` writes codes 28, 29, 30, and 31 in a 2 × 2 arrangement. Its initial pointer can be one row above the final top-left cell, and horizontal facing adjusts the column. The `YCHIN` offsets 40, 41, 80, and 81 account for that positioning. Both stationary and moving player cells receive attribute `$79`. `BUGRUB` clears the previous footprint selectively, replacing player codes with floor code 196.
-
-### Aliens: Eight Designs, Two Frames Each
-
-![All eight GONK alien designs, with the two frames for each design assembled into four-tile images](docs/analysis/game-aliens.svg)
-
-The source calls these designs **GONK #1–#8**; their stored type indices are 0–7. `DEF1` and `DEF2` in `VARIETY` each contain 256 bytes: eight designs × 32 bytes per frame. Each frame has the same top-left, top-right, bottom-left, bottom-right tile order as the stationary player.
-
-`GETDEF` chooses the room's alien design, or reuses the previous type when `DUCK` requests it, and copies its two frames into the 64-byte `ALIBUF` at `$024B`. `ALIANI` alternates between the two 32-byte halves and copies the selected frame to `$3E88–$3EA7`, defining codes **209–212**. The animation countdown reloads with 20; it is separate from the alien movement tempo.
-
-`PRNALS` maintains four alien slots. For each live slot it erases the previous four screen cells with code 196, then writes **209, 210 / 211, 212** at the new address, with attribute `$7C`. All live aliens share those four glyph definitions, so they share a design and animation phase. Their positions live in separate movement and print tables. Eight designs therefore do not imply eight independently selected designs on one screen.
-
-### Bombs, Scenery, Jigsaw, Radar, and Effects
-
-![Game objects assembled from their glyphs, including the bomb, scenery tiles, jigsaw pieces, enlarged piece, radar, and death cross](docs/analysis/game-objects.svg)
-
-| Graphic            | Codes or storage | Assembly and drawing      |
-| ------------------ | ---------------- | ------------------------- |
-| Planted bomb       | 244–247          | `BOMPRT`, 2 × 2 tiles     |
-| Bomb charge icon   | 44–47            | `COPYBM` and `READY`      |
-| Explosion fill     | 248 / `$3FC0`    | `FILBMB` and `ANIEXP`     |
-| Floor and scenery  | 196–199          | `DECODE` and `FADEIN`     |
-| Door               | 200              | `DOORDT` overlay          |
-| Radar room markers | 201–202          | `RADAR`, 5 × 5 cells      |
-| Box edges/corners  | 203–208          | Jigsaw and sidebar frames |
-| Jigsaw pieces      | 215–239          | One eight-byte glyph each |
-| Enlarged piece     | 240–243          | `PRPICE`, 2 × 2 tiles     |
-| Death animation    | 33–36            | `DEADCK`, mutable glyphs  |
-
-**Bomb and explosion.** `BOMPRT` writes codes 244, 245 / 246, 247 using the first four `YVAL2` offsets. It changes the attribute during the countdown to flash the bomb. `COPYBM` copies the same 32 bitmap bytes from `$3FA0` into the sidebar charge glyphs at `$3960–$397F`. `READY` rebuilds the charge image upward over time. Explosion cells use code 248; `ANIEXP` continually replaces that glyph's eight bytes using reads from `$8000,X`. Its live texture therefore cannot be represented by one definitive stored frame.
-
-**Scenery and borders.** The packed room data selects codes 196–199, then the decoder inserts doors as code 200. `ANIMAT` copies `BRIK3`, `BRIK1`, and `BRIK2` frames into codes 198, 199, and 200. It also animates horizontal and vertical border glyphs 203 and 204 using `XDAT` and `YDAT`. The initial bank and runtime appearance consequently differ even when no actor moves. The sheet includes both initial scenery and the first replacement brick frames.
-
-**Jigsaw.** Codes 215–239 contain the 25 small, one-bit jigsaw pieces. `PRPICE` selects a piece through `JIGNUM[SCREEN]`, copies its eight bytes into `JIGBUF`, and uses `XPAND` to duplicate each bit horizontally, then duplicates rows vertically. This creates four glyphs at `$3F80–$3F9F`. Their arrangement is **240, 242 / 241, 243**, because the expansion stores the entire left column before the right. `JIGCHR` surrounds them with a 4 × 4 cell frame; the piece cells use attribute `$42` and the frame uses `$71`. `TRANSF` later places the original small glyph in the sidebar's collection area.
-
-**Radar and death.** `RADAR` places 25 room-marker characters in the sidebar. It rewrites code 202 at `$3E50` with a marker derived from `MANX` and `MANY`, then uses that glyph for the current room; the sheet's marker is an illustrative position. `DEADCK` copies the player's current stationary glyphs into temporary codes 33–36, arranged **33, 35 / 34, 36**, scrolls them away, and scrolls in the `CROSSL` and `CROSSR` pattern. The cross shown is reconstructed from those pattern tables, rather than presented as an unchanged initial-bank asset.
-
-### From Bitmap Bytes to Visible Screen Cells
-
-![Worked example showing Dork's bytes, four glyph definitions, assembled image, and the screen and attribute addresses](docs/analysis/game-assembly.svg)
-
-The game uses a character display. Moving figures are drawn in software by changing screen cells and writable character definitions, and the drawing code doesn't allocate a hardware sprite for Dork or an alien. For character code `n`, the bitmap starts at **`$3800 + 8*n`**, and each of its eight bytes is one row.
-
-`XY` converts a cell coordinate into `SL = $0C00 + 40*y + x` and `CL = SL - $0400`. The screen holds character numbers, and the matching attribute cells set the display colours and how each cell is read. For example, placing stationary Dork at top-left cell `(10,6)` writes codes 28, 29, 30, and 31 at `$0CFA`, `$0CFB`, `$0D22`, and `$0D23`, and attributes `$08FA`, `$08FB`, `$0922`, and `$0923` each get `$79`. The coordinate is a worked example and doesn't say where the player is in the capture.
-
-`SETUP` selects RAM character graphics and the bank at `$3800`, turns on the game's display mode, and sets `BACKGR`, `MULTI1`, and `MULTI2` to `$11`, `$00`, and `$46`. Display colours can change later during the title, fades, and effects. A screen code can animate without moving when its eight glyph bytes change, and movement changes which codes sit in which cells instead. A port has to reproduce both.
-
-```mermaid
-flowchart LR
-    Tables["BALMAN / DEF1 / DEF2<br/>stored animation bytes"] --> Copy["MANGLP / GETDEF / ALIANI"]
-    Copy --> Bank["Writable character bank<br/>$3800–$3FFF"]
-    Position["Player or alien position"] --> Draw["PRINT / PRNALS<br/>XY + cell offsets"]
-    Draw --> Screen["Character codes at $0C00<br/>attributes at $0800"]
-    Bank --> TED["TED fetches glyph rows<br/>and applies display colours"]
-    Screen --> TED
-    TED --> Pixels["Visible character image"]
-```
-
-### How the Whole Screen Is Composed
-
-![Annotated VICE screenshot identifying the room, sidebar and bottom scrolling-message row](docs/analysis/game-screen.svg)
-
-The character screen has **40 columns × 25 rows**, representing 320 × 200 screen dots before border and emulator scaling. The room uses columns 0–31 and rows 0–23, or 256 × 192 dots. The sidebar uses columns 32–39. Row 24 contains the scrolling message. The rectangles above mark those regions on the existing gameplay-entry capture; they do not add game content to the screenshot.
-
-`DECODE` expands the selected room into `SCRBUF` with a 40-byte row stride. `FADEIN` copies scenery and door codes to `$0C00` and their attributes to `$0800`, varying the brightness during the transition. Blank cells in the room use code 196. `PRPICE` adds the central jigsaw display, and the actor and bomb routines overwrite cells as play goes on. It's one shared tile surface, not a stack of separately composited image layers, and the screen codes also feed collision and hit detection.
-
-`PRBDER` and `SETWIN` build the sidebar frame and labels, `READY` updates its bomb icon, `TRANSF` populates the collected-piece area, and `RADAR` draws the map. The bottom message uses `MESSVE` and raster-controlled fine scrolling. `RAST1` restores the main area's display settings and calls `ANIMAT`; the alternating `RAST2` service scrolls the message, then performs `UPBOMB`, `PRNALS`, and `MOVEMN` when gameplay is enabled. See the interrupt diagram above for the scheduling detail.
-
-### One-Bit Character Atlas
-
-![Initial character bank decoded as one-bit glyphs, with character codes and addresses](docs/analysis/font-hires.svg)
-
-*All 256 initial eight-byte glyphs from `$3800–$3FFF`, shown as eight one-bit pixels per row. Labels give the decimal character code and hexadecimal byte address. This view makes text and fine patterns easier to inspect.*
-
-### Two-Bit Character Atlas
-
-![The same initial bank decoded as four two-bit pixel pairs per row](docs/analysis/font-multicolor.svg)
-
-*The same bytes interpreted as four two-bit pixel pairs per row. Preview colours identify raw indices; they are not a reconstruction of TED palette selection. Actual display depends on character attributes, display settings, and runtime changes to character memory.*
-
-Both views are worth having, because how a byte is read depends on the display mode. The sheets show only the initial bank. `ANIMATE-CHARS`, `VARIETY`, and other drawing code change glyph contents at runtime, so no sheet can show every animation frame or presentation state.
+[Illustrated Graphics](docs/GRAPHICS.md) decodes the game's character graphics from the original bytes: Dork, the eight alien designs, bombs, scenery, jigsaw pieces and radar, how bitmap bytes become screen cells, how the whole screen is composed, and both character-set atlases.
 
 ---
 
@@ -475,82 +375,9 @@ Register constants have to stay equates, and instructions after labels have to s
 
 ---
 
-## Modifying the C16 Game
+## Modification and Porting
 
-### Establish a Development Source Tree
-
-The restoration pipeline reads the image and the explicit fallback files, regenerates `build/recovered-c16.s`, and rejects any difference from the reference. It deliberately has no mode for building a modified game. Changes made only to generated files get overwritten, and changes to the historical `src/` files have no effect on this pipeline.
-
-The next step is to create a versioned working source tree with its own target, copied from the resolved original modules and keeping their provenance. A proposed location is `versions/<name>/source/`, but neither the directory nor the target exists yet. Keep the recovered inputs and the current baseline command, so later changes can still be compared with the authentic game.
-
-The new target should accept intentional differences and report them, while the restoration target keeps requiring equality with the reference. It also has to deal with code growth and memory layout. This is proposed work, and `restore_c16.py` doesn't offer it today.
-
-### Choose a Focused First Change
-
-| Intended change       | Start here                          |
-| --------------------- | ----------------------------------- |
-| Controls              | `KEY-SCAN`, `JOYSTIK`               |
-| Title options         | `ALTERABLES`, `MAGNIFICENT`         |
-| Message text          | `WHOOPPEE-MESSAGE`, `MESSAGE-STUFF` |
-| Room layouts          | `MUFF`, `DECODER`, `INIT-ROOMS`     |
-| Doors and transitions | `DOORDT`, `CHANGE-ROOM`             |
-| Player movement       | `MOVE-PIXEL`, `CHECK-MAN`           |
-| Bomb behaviour        | `BOMB-CODE`, `FILLER-BOMB`          |
-| Enemy movement        | `ALIENS-MEGA/CODE`                  |
-| Difficulty            | `LEVEL-INCREASE`                    |
-| Jigsaw rules          | `JIGSAW-CODE`, `SCATTER`            |
-| Score and names       | `SCORE-ROUTINES`, `WORK-HIGH`       |
-| Animation             | `ANIMATE-CHARS`, `VARIETY`          |
-| Timing and scheduling | `IRQ`, `RASTER-ROUTINES`, `UTILS`   |
-
-Changing text or existing data is a good way to learn the assembly and packaging path, as long as you understand its encoding and the space allocated for it. A control change starts with `KEY-SCAN` and the shared input flags. A difficulty change starts with `LEVEL-INCREASE` and the routines that use its values.
-
-Room, graphics, enemy, and bomb changes reach into more modules. Trace their state, rendering, and collision dependencies before you start, and write down the behaviour you mean to change and how you'll see it.
-
-### Preserve Assembly Assumptions
-
-The decoder modifies instruction operands at runtime. Register constants have to stay equates, and instructions after labels have to survive conversion. Those were the concrete causes of the earlier restoration failure.
-
-A call such as `JSR DELAY+2` enters the middle of a routine, so changing its first instruction can break its callers. Absolute addresses, zero-page pointer pairs, character-number conventions, and interrupt-owned state need the same care. For the original target, keep checking the listing and map as well as testing behaviour.
-
-### Validate Deliberate Changes
-
-Keep `make test` and the authentic build as baseline checks. A modified target should add checks for the change you intended, and shouldn't expect its complete PRG to match the original. Where a comparison still makes sense, compare the unchanged routines or data.
-
-Use VICE breakpoints and screenshots to check initialization and rendering, then exercise the affected mechanics with real input. The scripted-fire check only shows that the game reaches gameplay. It isn't enough evidence for movement, bombs, room transitions, or a new input mapping. See [Testing](TESTING.md).
-
----
-
-## Developing Versions for New Platforms
-
-### Carry Forward Rules and Data
-
-The parts worth carrying over are the logical room grid, the room-to-layout and jigsaw mappings, movement and collision rules, enemy state, bomb behaviour, progression, scoring, and the game-state transitions. They could form a portable model, but the original assembly mixes them with display and hardware access, and the repository has no platform-independent engine yet.
-
-Start by writing those rules down from the working source and watching how the baseline behaves in typical situations. Decide how the new version will represent positions, timers, randomness, and object state before you pick a renderer or replace the update loop.
-
-### Replace Hardware Responsibilities Explicitly
-
-| Original responsibility | New-platform responsibility            |
-| ----------------------- | -------------------------------------- |
-| TED register writes     | Display and audio backend              |
-| Raster interrupt work   | Defined update order and timing        |
-| Keyboard/joystick scan  | Host input mapped to game actions      |
-| Character-memory edits  | Mutable glyphs or equivalent animation |
-| Screen/attribute writes | Tile and colour representation         |
-| Hardware-seeded RNG     | Defined seeding and random sequence    |
-| KERNAL/monitor calls    | Host startup and text facilities       |
-| Busy-wait delays        | Explicit timers or scheduled updates   |
-
-A port should keep the relationship between foreground logic and interrupt-driven work. Matching a frame rate doesn't reproduce the original order of events. A fixed clock and seed make it easier to compare room setup, movement, and enemy behaviour while you develop.
-
-### Decide What the New Version Changes
-
-Say which you're after: the original behaviour on a new backend, an enhanced edition, or a redesign that reuses the original rules and assets. Any change to resolution, aspect ratio, controls, difficulty, randomness, or timing should be deliberate and testable.
-
-For a port, byte equality is no longer the right test. Compare the observable rules and state transitions, use reference captures where the presentation should match, and test the new platform's input, audio, and display on their own. Keep the original credits, and keep recovered assets distinct from newly made material.
-
-This project hasn't picked a destination platform or started a port. The architecture above is a guide for that future work, and no port exists yet.
+The [Modification and Porting Guide](docs/PORTING_GUIDE.md) covers how to change the C16 game without losing the authentic baseline, where to start for common changes, the assembly assumptions to keep, and how to plan a version for another platform.
 
 ---
 

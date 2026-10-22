@@ -26,7 +26,7 @@ class OriginalGameRegression(unittest.TestCase):
         cls.temporary.cleanup()
 
     def test_complete_prg_matches_surviving_reference(self):
-        self.assertEqual(self.program.read_bytes(), (ROOT / 'Original_Files/DORKSDIL.BIN').read_bytes())
+        self.assertEqual(self.program.read_bytes(), (ROOT / 'Original Source Recovered/1992/DORKSDIL.BIN').read_bytes())
 
     def test_executable_is_assembled_from_source(self):
         reference = self.program.read_bytes()
@@ -37,7 +37,7 @@ class OriginalGameRegression(unittest.TestCase):
     def test_earlier_archive_dependencies_are_explicit(self):
         manifest = json.loads((self.build / 'recovery-manifest.json').read_text())
         fallbacks = {entry['name'] for entry in manifest['files']
-                     if entry['source'].startswith('Original_Files/')}
+                     if entry['source'].startswith('Original Source Recovered/1992/')}
         self.assertEqual(fallbacks, set(FALLBACKS))
 
     def test_image_contains_the_untruncated_bomb_routines(self):

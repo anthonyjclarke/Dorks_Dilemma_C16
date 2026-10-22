@@ -1,52 +1,17 @@
-# Build artifacts
-build/
-.pio/
-*.o
-*.prg
-*.lst
-*.map
-labels.txt
-
-# PlatformIO
-.pioenvs/
-.piolibdeps/
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# VSCode
-.vscode/*.log
-
-# Python
+# Generated output only. Original PRGs, BINs, disk images, archives and art are preserved.
+/build/
+/.pio/
+/.pioenvs/
+/.piolibdeps/
+/.venv/
+node_modules/
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-ENV/
-
-# Temporary files
-*.tmp
-*.bak
+.DS_Store
+._*
 *.swp
 *~
+.vscode/*.log
 
-# Keep certain files
-!build/.gitkeep
-!.vscode/
-
-# Don't ignore original source files
-!*.TXT
-!*.BIN
-!*.BAS
-
-# Preserve original PRG files in the recovered disk collection
-!Dorks-Dilemma-C16-2026-FullDiskCopy/*.prg
-
-# Keep documentation
-!*.md
-!*.txt
+# VICE may create this before its explicit log path is applied.
+/monitor.log

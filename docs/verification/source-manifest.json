@@ -1,0 +1,557 @@
+{
+  "image_sha256": "26286ec4076f75c8151f3a99fe1c0b5e0bb7381a7ee64863716b56328477212c",
+  "files": [
+    {
+      "name": "ANIMATE-CHARS",
+      "type": "SEQ",
+      "size": 3551,
+      "sha256": "47d54296ad80b6ba33c41862c556f059f79fdbf5c7f5daf37b00f9e476d1f2c1",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "BOMB-CODE",
+      "type": "SEQ",
+      "size": 3474,
+      "sha256": "216ff8476c48159398dc2cc81c0828d5c9f641c6f95b95b36ea54f651bf932b8",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "BORDER",
+      "type": "SEQ",
+      "size": 666,
+      "sha256": "4030e36033289efa7b51e989cadfe8615d86da1e0b3b59c697da3f5dc0f10216",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "CHANGE-ROOM",
+      "type": "SEQ",
+      "size": 2262,
+      "sha256": "d329707fbd4a34e8c2b0b88adc71bfbe27e090c26e372add97cd19212653aba8",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "CHECK-MAN",
+      "type": "SEQ",
+      "size": 987,
+      "sha256": "77063b3a49a3f09f7f84125b54c9323baa22bebe2833c3142aa4f839b7d7f75e",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "COMMAND",
+      "type": "SEQ",
+      "size": 403,
+      "sha256": "cdd9b46a56ca2d5a57ccf32ad11cf873dde93b3c531f29c9c6ed7e4bb44faa31",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DECODER",
+      "type": "SEQ",
+      "size": 2976,
+      "sha256": "03d3df7a07e1a30f55e19c603014b0b83ec3047789ba4fb330291e3af3306b39",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DESIGNER",
+      "type": "SEQ",
+      "size": 3744,
+      "sha256": "173032aa6f3a43f0ef787c0468fd06466e6b76bd51fb592a2215009b3de96dcc",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DUMPER",
+      "type": "SEQ",
+      "size": 1699,
+      "sha256": "fb2caa72b3089567ee12599b4e2eeca331b864c5e34a7976467e8c20328c90af",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "EDIT-JIGSAW",
+      "type": "SEQ",
+      "size": 2604,
+      "sha256": "a073609dcc7af3153ebeccdb46ef37875bc418a8417eed30bfda388551ce04e0",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "FILLER-BOMB",
+      "type": "SEQ",
+      "size": 2470,
+      "sha256": "e29c0aa4fda81a34e148f6f8a1178196eb458abcf80dc83508be8ab5c142a29f",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "HALL-OF-FAME",
+      "type": "SEQ",
+      "size": 282,
+      "sha256": "8eeb07474aeae18e8cde17767fdf38df889ea54af986443035552789c9afb711",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "HEXER",
+      "type": "SEQ",
+      "size": 204,
+      "sha256": "304a8c9d2f14f809129c604fb154e13f3d346272c6cf22d04c50e611432a3059",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "HIGH-PRINT",
+      "type": "SEQ",
+      "size": 2947,
+      "sha256": "9c3a6d7858fc63a1ebd28621cf02ff168ce4eac19b3da916065d4e14cc885422",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "INIT-ROOMS",
+      "type": "SEQ",
+      "size": 1056,
+      "sha256": "57452e4fe8f57d3715912e85ec075bbbbee9a2762bc9727cfe8eb3037d5c7d4c",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "INKEY",
+      "type": "SEQ",
+      "size": 762,
+      "sha256": "0a20bdd66d5651cef4b46cdcc804a7003ea120fdec7cd3b53d321f0775b28a56",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "IRQ",
+      "type": "SEQ",
+      "size": 1008,
+      "sha256": "06a29a4b10c3992a41cfc17c061a4cf99cf89e7d0a2a8187ce1567d4dd687bf5",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "JIGSAW-CODE",
+      "type": "SEQ",
+      "size": 2393,
+      "sha256": "0147af8acddf95d8b1f138f4b85323f46715bf6daeaf800967d8edb44baa74da",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "JOYSTIK",
+      "type": "SEQ",
+      "size": 668,
+      "sha256": "f227e69d67a3237d2f8dca60c323ef56eb89f5005cc229264e6c378325f8847c",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "KEY-SCAN",
+      "type": "SEQ",
+      "size": 663,
+      "sha256": "494afb8e12ea9605aedacd9ae1e33e665a0d4d29909fe205b968e292a5beb442",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MACROS",
+      "type": "SEQ",
+      "size": 160,
+      "sha256": "500c026897d00ea1a4afc635ccd2b2c846ebe6ea6c58651f94f74489fa56bcd5",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MAGNIFICENT",
+      "type": "SEQ",
+      "size": 847,
+      "sha256": "f01e8367df65987f5c4a31c3837d72d50f422ac393f0c68aee0e4ab1d9619bed",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MAIN-VARS",
+      "type": "SEQ",
+      "size": 472,
+      "sha256": "363b57de2ba34db63f8bb1436bbe822f32e07e8694fd9371235b2dee28d25cee",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MESSAGE-STUFF",
+      "type": "SEQ",
+      "size": 434,
+      "sha256": "5e39319f6374bc2bdb9350d170bb40d8dfa79867f3d649b1caa507aea900dab0",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MOVE-PIXEL",
+      "type": "SEQ",
+      "size": 4079,
+      "sha256": "0c60c69d05341b98ed59f099373e687d427352647f53b9365a4f275c73192a78",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DES-IRQ",
+      "type": "SEQ",
+      "size": 725,
+      "sha256": "16fc3618745566be0dffd9a180a352d2120ada291e9584402b13344ea9bce334",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "VARS",
+      "type": "SEQ",
+      "size": 4273,
+      "sha256": "4fd491014e1dd3870ed175f2141752347df92c91c0d73ae46dacd84fc360e927",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "PLAY-GAME",
+      "type": "SEQ",
+      "size": 1420,
+      "sha256": "3561611cf2ff4170f9318438ca3e0d93d25f14a743a570efb7021ebcc77ec1c8",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "RADAR-SCANNER",
+      "type": "SEQ",
+      "size": 1044,
+      "sha256": "050968fefa84bced500e462fab5e02e523bb824739a54ed0d12b87340b2ca2e1",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "ROOMS OF PERIL",
+      "type": "SEQ",
+      "size": 1921,
+      "sha256": "ebb6114709d2c09a4e75973442320ae35bb6aaf740914e4110723ce02586ea13",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "VARIETY",
+      "type": "SEQ",
+      "size": 3407,
+      "sha256": "24cc9a98f18b05579358f515242042f4c245dcff2362faa06677fe9da06d330c",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SCATTER",
+      "type": "SEQ",
+      "size": 959,
+      "sha256": "e6d0338cff57a31d1000f4fd90b1c2356e7b281d187712350ca9dccdf19f0c01",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SETUP",
+      "type": "SEQ",
+      "size": 519,
+      "sha256": "78a3075a08545757211cf34277b0fe909198031735e99db94f27c637747a95a2",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "TABLES",
+      "type": "SEQ",
+      "size": 228,
+      "sha256": "ace6bfe7c52626101a7625672e70ad07fabaf1865041a971ba3a132788691a8e",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "UTILS",
+      "type": "SEQ",
+      "size": 1408,
+      "sha256": "14b0923f3616bb04c087cc81c7994fceb16e38352a9b9b6677c74da4caf366a0",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SCREEN-INIT",
+      "type": "SEQ",
+      "size": 1455,
+      "sha256": "52d436602d68f9cdb52666441494fdab368447129ecdffaed48b0a38ade34110",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "CAMEL",
+      "type": "PRG",
+      "size": 2050,
+      "sha256": "531256bd05c755f22f290db608606ddd7aaaffed265feb7c71649832019227fb",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "BEEB-SET",
+      "type": "PRG",
+      "size": 2050,
+      "sha256": "6b213eb03a43daeaddfc1485745ecfa6d2c95af6a15946557444fdb51acb56af",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "BOOT ALL",
+      "type": "PRG",
+      "size": 136,
+      "sha256": "a7ca9c127ed883c39a8ef92f61e5ed56c81da4e99cb0098390527527194e80e1",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "C16",
+      "type": "PRG",
+      "size": 279,
+      "sha256": "833ca1974cc27a6100044b80d857cb0ca9cfe9a7bd88564b972b6d176a7a9cb0",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "CHARS",
+      "type": "PRG",
+      "size": 2050,
+      "sha256": "55d45ad93e15bd5e69fafc1f2a46fbb76d8437886754772843d709be9a33b98c",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "COMP-DATA",
+      "type": "PRG",
+      "size": 98,
+      "sha256": "22af60881670c3c133d4a61fc5a0f642b8fe17fca75412ffaaef8b14fa72c06d",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DATA-SCREENS",
+      "type": "PRG",
+      "size": 2402,
+      "sha256": "54ae7bf2ee6c90a00c3b91b0122bb8a6933083987f22c158d889edaf5da7995d",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DOS5.2",
+      "type": "PRG",
+      "size": 866,
+      "sha256": "bc3d8fa6eda201ad7a430585d624f9b309ffc000fac4bfbc93299d03bd7bd27d",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DOUBLE-GENERATOR",
+      "type": "PRG",
+      "size": 616,
+      "sha256": "e8b37bbc6b87700b297dc5bf6044338bfbc244eb358497fec4a9a76b969bb936",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "EDITOR",
+      "type": "PRG",
+      "size": 1626,
+      "sha256": "d21aa6fd0553ed87f32ea52c3a8141cdd3555edb8f75117a8652080818091c72",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "ALTERABLES",
+      "type": "SEQ",
+      "size": 1125,
+      "sha256": "d344324c95945a547513f5987fc7abf0eb38950bf06d859b314a1a11e82dab04",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "HYPRA-LOAD OBJ",
+      "type": "PRG",
+      "size": 1460,
+      "sha256": "203969671aaafcf116e0f7422f35adecbbf43558432c9c77fbb75d18c5518185",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MEGA-SUPER",
+      "type": "PRG",
+      "size": 1026,
+      "sha256": "6115ee51712a0bd86576d14209e97bd05d859bff6f91c47c4b2e0a9032e4ba87",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SUPER-LOAD",
+      "type": "PRG",
+      "size": 946,
+      "sha256": "8ad18afb13a8216648049c6466a1f41eb003f1e0152d12235880e6318d762d9b",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "ASM.C64",
+      "type": "PRG",
+      "size": 10241,
+      "sha256": "becc56940ab3fc21251ac962218f4d15bf74d2e0152a12d65e35c685689f677f",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DEATH-CODE",
+      "type": "SEQ",
+      "size": 2862,
+      "sha256": "c00b4166fedc4c4ac47c4f508ecdf5f0074ecdeeeb9bab5c35329c9b4e0dde65",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "GAME-OVER",
+      "type": "SEQ",
+      "size": 808,
+      "sha256": "0defa8373e5a2627aab11e1417a48ca5b6c88f4c086a745c046c0a2bc6541d0c",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "TITLE-WORKS",
+      "type": "SEQ",
+      "size": 657,
+      "sha256": "48581aafb88ec4fc593327331a35ea76cf065f2aaf6066b4dacb4eff97cf0b21",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SCORE-ROUTINES",
+      "type": "SEQ",
+      "size": 606,
+      "sha256": "19e79a712aacbc9eaca2f8ce7b6b0d453bd5ae2fb9862aa2fb352e473d72cf2e",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "WORK-HIGH",
+      "type": "SEQ",
+      "size": 2867,
+      "sha256": "a1ffd6975ef3bc44525b64bdc45348af3f7314cabcd358ed3a8cf1b503a3a034",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "SWORD!",
+      "type": "SEQ",
+      "size": 636,
+      "sha256": "43573feb091591c555f30417a005aa252c916a350bd4787d018eb5eeba14f174",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "EXTRA-MEMORY",
+      "type": "SEQ",
+      "size": 749,
+      "sha256": "30d0498624395c8e6f9a1021f086cd0c1a008a6c9c46b3d3e211539e75129908",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "FRAK!",
+      "type": "PRG",
+      "size": 2050,
+      "sha256": "932ef8582d6a0c637e0a607bc53f836b22cf7dc1d6aa8b861be8e76b8bc9b476",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "KILLER-CODE",
+      "type": "SEQ",
+      "size": 1585,
+      "sha256": "b822771d6ec600d4439d2d9087af4466b3356da7a7ecef05265dbf3f60b78286",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "LEVEL-INCREASE",
+      "type": "SEQ",
+      "size": 1041,
+      "sha256": "ea58ad79c4e51a2a4b4c7620fe004d078a7d2a15633472dc8766c5aabb5c2afe",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "OBJ",
+      "type": "SEQ",
+      "size": 19616,
+      "sha256": "f0a87c5b6d50a1ae155aa78a8757466442ff72ae4c15b389f35e39e88be333b8",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "O.DES",
+      "type": "SEQ",
+      "size": 2014,
+      "sha256": "d95729148ff73cc09e1d9905a048f8f01aa9de7aef2c82bf4abf3e89fc9bc771",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DES-ANI",
+      "type": "SEQ",
+      "size": 729,
+      "sha256": "63b5dc9f3a400f5f27540f68192268e644514e69f231a100829819cdc3b79228",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "MUFF",
+      "type": "PRG",
+      "size": 2402,
+      "sha256": "b0a6777d3c7d10e3aac80a0e2ed4205aff4721a7b99ef5484cca16069dab1957",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "DORK'S DILEMMA",
+      "type": "PRG",
+      "size": 12290,
+      "sha256": "3c6f6426b93862de9bd836842f1ffc0bc46f19056e2fc0706ca0da8037a7ce05",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+      "closed": true
+    },
+    {
+      "name": "RASTER-ROUTINES",
+      "source": "Original Source Recovered/1992/RASTERRO.TXT",
+      "sha256": "49a583d6e35745d45ca37fa71d7fed04ffb1cbc48427cee2388b2bbb49c9cb6b",
+      "normalization": "upper case; universal newlines"
+    },
+    {
+      "name": "ALIENS-MEGA/CODE",
+      "source": "Original Source Recovered/1992/ALIENSME.TXT",
+      "sha256": "2e0569e959b45411680c2005d6dcd1ff280f5757cd1cfd2acd243cd1479029b6",
+      "normalization": "upper case; universal newlines"
+    },
+    {
+      "name": "ALIEN-CHEK/PRINT",
+      "source": "Original Source Recovered/1992/ALIENCHE.TXT",
+      "sha256": "24a4e3238afab1f28bf2c65fb00d39ef499c3771be6428959b66b6878019ef67",
+      "normalization": "upper case; universal newlines"
+    },
+    {
+      "name": "WHOOPPEE-MESSAGE",
+      "source": "Original Source Recovered/1992/WHOOPPEE.TXT",
+      "sha256": "f16a381a74305e063aebfb0df5d030648877dc56e027d57717e486c002ffab3f",
+      "normalization": "upper case; universal newlines"
+    }
+  ]
+}

@@ -1,5 +1,34 @@
 # Changelog
 
+## [1.2.0] 23-10-2026
+
+Structure and documentation release. It brings the repository layout, document set and tooling in line with my Tycoon Tex, Xargon Wars and Xargon's Revenge restorations, and moves the material from my first restoration attempt out of the repository. The game build is unchanged and still matches `DORKSDIL.BIN` byte for byte (SHA-256 `3c6f6426…a7ce05`).
+
+### Added
+
+- `RIGHTS.md`, `docs/SHARING_ON_GITHUB.md`, `docs/PORTING_GUIDE.md` and `docs/GRAPHICS.md`. The porting guide and graphics chapter are the "Modifying", "New Platforms" and "Game Graphics" sections moved out of `CODEBASE_ANALYSIS.md`, unchanged apart from links.
+- A "Recovery Background and Build Template" section in `docs/HISTORY_AND_CREDITS.md`: how the January–April 2026 attempt worked, why it failed, and how the October pipeline replaced it and became the template for my other restorations.
+- `docs/verification/` with the reviewed build comparison, source manifest, VICE result and tool versions for this checkpoint.
+- GitHub Actions workflow (`.github/workflows/build.yml`) that builds, tests, builds both PlatformIO environments and checks they agree.
+- `.gitattributes` that turns off text conversion for `Original Source Recovered/` and `Original Artifacts/`.
+- `make verify`, and `--original` in `scripts/run_vice.py` to launch the surviving binary.
+
+### Changed
+
+- Folders renamed to the common layout: `Original_Files/` is now `Original Source Recovered/1992/`, `Dorks-Dilemma-C16-2026-FullDiskCopy/` is now `Original Source Recovered/2026/`, and the publication images and disk photograph moved from `docs/images/` to `Original Artifacts/`. File contents are unchanged. Scripts, tests, VS Code tasks and docs use the new paths.
+- Docs renamed to the common set: `DEVELOPMENT_HISTORY` is `HISTORY_AND_CREDITS`, `PUBLICATION_ARCHIVE` is `ARTIFACTS`, `RECOVERED_DISK_CONTENTS` is `SOURCE_INVENTORY`, `RESTORATION_STATUS` is `SOURCE_AND_VALIDATION`, and `SOURCE_TO_VICE` with `PLATFORMIO_GUIDE` is `BUILD_AND_RUN`.
+- README, Quick Start, Testing, `src/README.md` and the handbook chapter list follow the common structure. Release badge updated to `v1.2.0`.
+- `.gitignore`, `.editorconfig`, `Makefile` and the VS Code settings and extension recommendations match the other restorations.
+- The documentation test expects no link warnings, now that there are no historical reports.
+
+### Removed
+
+- The first restoration attempt, none of it a build input: the consolidated and converted source in `src/`, `Recovered_Source/`, `disassembly/`, `archive/`, `include/`, `lib/`, `images/`, the root `test_*.asm` files, 13 conversion scripts, 12 status reports and the old index in `docs/`, and `PROJECT_SETUP.md`, `PROJECT_STATUS.md`, `STRUCTURE.txt` and `SUMMARY.txt`. They stay in Git history up to commit `90f8739`.
+- `TycoonText-C16.d64` from the 2026 disk folder. It is a byte-identical copy of the Tycoon Tex source disk, preserved in that repository.
+- The empty `.vscode/launch.json`.
+
+---
+
 ## [1.1.0] 22-10-2026
 
 Documentation release. It brings the README, the HTML handbook and its tests in line with my Tycoon Tex and Xargon Wars restorations. The game build is unchanged and still matches `DORKSDIL.BIN` byte for byte.
@@ -66,11 +95,6 @@ Manual keyboard and joystick testing, sound, bombs, room transitions, a full pla
 ### Added
 
 - `Recovered_Source/` with a second set of named copies of the game's source modules.
-- Claude Code project settings.
-
-### Changed
-
-- `CLAUDE.md` updated.
 
 ---
 

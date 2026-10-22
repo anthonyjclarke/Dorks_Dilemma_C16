@@ -75,30 +75,30 @@ Each disk ZIP includes an `INDEX` listing the original Commodore directory next 
 
 ## In This Project
 
-The archive's `READ.ME` names two disks for this game: `DISK5`, "Dorks Dilemma C16", and `DISK1B`, "Dorks Dilemma C64". I compared every file in this project against the central directories of `Disk 1-6/DISK5.ZIP` (93,852 bytes, CRC-32 `1c0dd178`, 71 entries) and `Disk 1-6/DISK1B.ZIP` (86,238 bytes, CRC-32 `b9d46dff`, 74 entries), by CRC-32 and size. The entries in both are dated 7 October 1992, the same date as `Original_Files/INDEX`.
+The archive's `READ.ME` names two disks for this game: `DISK5`, "Dorks Dilemma C16", and `DISK1B`, "Dorks Dilemma C64". I compared every file in this project against the central directories of `Disk 1-6/DISK5.ZIP` (93,852 bytes, CRC-32 `1c0dd178`, 71 entries) and `Disk 1-6/DISK1B.ZIP` (86,238 bytes, CRC-32 `b9d46dff`, 74 entries), by CRC-32 and size. The entries in both are dated 7 October 1992, the same date as `Original Source Recovered/1992/INDEX`. In this section `1992/` and `2026/` are the two folders under `Original Source Recovered/`.
 
 The 2026 captures are raw Commodore files, so a sequential file only matches after the conversion the 1992 export applied: each carriage return becomes CR LF and PETSCII letters swap case. The export turned tokenised BASIC programs into text listings, so those can't be compared by CRC.
 
-| Project files                        | Archive disk | Result                             |
-| :----------------------------------- | :----------- | :--------------------------------- |
-| `Original_Files/` (71 files)         | `DISK5`      | All 71 identical                   |
-| `Dorks-Dilemma-C16.d64` (66 files)   | `DISK5`      | 60 identical, 6 differ (see below) |
-| Loose `.seq` and `.prg` files (72)   | `DISK1B`     | 66 identical, 6 BASIC listings     |
+| Project files                      | Archive disk | Result                             |
+| :--------------------------------- | :----------- | :--------------------------------- |
+| `1992/` (71 files)                 | `DISK5`      | All 71 identical                   |
+| `Dorks-Dilemma-C16.d64` (66 files) | `DISK5`      | 60 identical, 6 differ (see below) |
+| Loose `2026/` `.seq` and `.prg`    | `DISK1B`     | 66 identical, 6 BASIC listings     |
 
 ### DISK5 and the C16 Build
 
-`Original_Files/` is the archive's `DISK5`. All 71 files, including `INDEX` and `DORKSDIL.BIN` (12,290 bytes, CRC-32 `03a9a7c9`), have the same CRC-32 and size as the entries in `DISK5.ZIP`, and the archive's extracted `Disk 1-6/DISK5/` folder agrees with the ZIP for every file. Since the restored build reproduces `Original_Files/DORKSDIL.BIN`, it reproduces the archive's copy too.
+`Original Source Recovered/1992/` is the archive's `DISK5`. All 71 files, including `INDEX` and `DORKSDIL.BIN` (12,290 bytes, CRC-32 `03a9a7c9`), have the same CRC-32 and size as the entries in `DISK5.ZIP`, and the archive's extracted `Disk 1-6/DISK5/` folder agrees with the ZIP for every file. Since the restored build reproduces `Original Source Recovered/1992/DORKSDIL.BIN`, it reproduces the archive's copy too.
 
 In `Dorks-Dilemma-C16.d64`, the build input, 60 of the 66 files match `DISK5`: 12 programs byte for byte, including `DORK'S DILEMMA`, and 48 sequential files after conversion. None of them matches only `DISK1B`. The six that don't match are these:
 
 - **`FILLER-BOMB`** converts to 2,797 bytes. `DISK5/FILLERBO.TXT` is its first 1,287 bytes and then stops at `fild`. The archive's copy is cut off at the same point as mine, so the loss happened in or before the 1992 export, not in later copying.
 - **`BOOT ALL`, `C16`, `DOUBLE-GENERATOR`, `HYPRA-LOAD OBJ` and `ASM.C64`** are BASIC programs, held in `DISK5` as listings.
 
-`DISK5` also holds `ALIEN-CHEK/PRINT`, `ALIENS-MEGA/CODE`, `RASTER-ROUTINES` and `WHOOPPEE-MESSAGE`, which aren't in the disk image's live directory. These are the four modules the build takes from `Original_Files/`, so its fallback files are the archive's `DISK5` files.
+`DISK5` also holds `ALIEN-CHEK/PRINT`, `ALIENS-MEGA/CODE`, `RASTER-ROUTINES` and `WHOOPPEE-MESSAGE`, which aren't in the disk image's live directory. These are the four modules the build takes from `Original Source Recovered/1992/`, so its fallback files are the archive's `DISK5` files.
 
 ### DISK1B and the Loose Files
 
-The loose files beside the disk images in `Dorks-Dilemma-C16-2026-FullDiskCopy/` are the C64 development disk, `DISK1B`. All 53 `.seq` files match after conversion, and 13 of the 19 `.prg` files are byte-identical, including `8ZOOM`, `ALIENS1`–`ALIENS3`, `CAMEL2` and `HILOAD`, which exist only on `DISK1B`. The other six (`ARROW1`, `ARROW2`, `ASM.C64`, `BOOT ALL`, `C16` and `DOUBLE-GENERATOR`) are BASIC programs. Of the 66 matches, 22 are files `DISK1B` shares unchanged with `DISK5`.
+The loose files beside the disk images in `Original Source Recovered/2026/` are the C64 development disk, `DISK1B`. All 53 `.seq` files match after conversion, and 13 of the 19 `.prg` files are byte-identical, including `8ZOOM`, `ALIENS1`–`ALIENS3`, `CAMEL2` and `HILOAD`, which exist only on `DISK1B`. The other six (`ARROW1`, `ARROW2`, `ASM.C64`, `BOOT ALL`, `C16` and `DOUBLE-GENERATOR`) are BASIC programs. Of the 66 matches, 22 are files `DISK1B` shares unchanged with `DISK5`.
 
 ### Archive Posts for This Game
 

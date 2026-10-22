@@ -149,7 +149,10 @@ export function buildHandbook(root = ROOT, configFile = 'docs/handbook.json') {
     const licenses = ['scripts/vendor/MARKED-LICENSE.md', 'scripts/vendor/MERMAID-LICENSE'].map(file => `<h3>${escape(path.basename(file))}</h3><pre>${escape(read(file).toString('utf8'))}</pre>`).join('\n');
     const provenance = Object.fromEntries([...inputs].sort(([a], [b]) => a.localeCompare(b)));
     const digest = hash(JSON.stringify(provenance));
+    // Game-specific wording lives in handbook.json, so the template is shared.
     const replacements = {
+        TITLE: escape(config.title), BRANDTOP: escape(config.brand[0]), BRANDBOTTOM: escape(config.brand[1]),
+        DESCRIPTION: escape(config.description), INCLUDES: escape(config.includes),
         STYLE: css, NAV: nav, BODY: body, COUNT: String(docs.size), DIGEST: digest.slice(0, 12),
         MERMAID: scriptSafe(mermaid), CLIENT: scriptSafe(client), LICENSES: licenses,
         PROVENANCE: JSON.stringify({ inputs: provenance, digest, warnings }).replace(/</g, '\\u003c'),

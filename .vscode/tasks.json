@@ -87,7 +87,7 @@
             "command": "python3",
             "args": [
                 "scripts/run_vice.py",
-                "Original_Files/DORKSDIL.BIN"
+                "Original Source Recovered/1992/DORKSDIL.BIN"
             ]
         },
         {

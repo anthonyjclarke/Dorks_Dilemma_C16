@@ -1,0 +1,51 @@
+name: Reassemble Dork's Dilemma
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  assemble:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install cc65 and PlatformIO
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cc65
+          python -m pip install platformio==6.1.19
+      - name: Build from the preserved disk and compare with DORKSDIL.BIN
+        run: python scripts/restore_c16.py
+      - name: Test provenance, fallbacks and conversion
+        run: python -m unittest discover -s test -p 'test_*.py' -v
+      - name: Build both PlatformIO environments
+        run: pio run -e c16 -e c16_debug
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check the HTML handbook is current
+        run: node scripts/build_docs.mjs --check
+      - name: Test the documentation generator
+        run: node --test test/test_docs.mjs
+      - name: Check output agreement
+        run: |
+          cmp build/dorks.prg build/platformio/c16/dorks.prg
+          cmp build/dorks.prg build/platformio/c16_debug/dorks.prg
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dorks-dilemma-c16
+          path: |
+            build/dorks.prg
+            build/comparison.json
+            build/recovery-manifest.json
+            build/recovered-c16.s
+            build/labels.txt
+            build/map.txt
+            build/dorks.dbg

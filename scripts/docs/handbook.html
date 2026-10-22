@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Dork's Dilemma C16 restoration: history, packaging, reviews, build instructions, source analysis and reference.">
+    <meta name="description" content="{{DESCRIPTION}}">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; font-src data:; connect-src 'none'; base-uri 'none'; object-src 'none'">
-    <title>Dork's Dilemma – Complete Documentation</title>
+    <title>{{TITLE}} – Complete Documentation</title>
     <style>{{STYLE}}</style>
 </head>
 <body>
     <a class="skip" href="#handbook">Skip navigation</a>
     <aside class="sidebar" aria-label="Handbook navigation">
-        <a class="brand" href="#handbook">DORK'S<br><span>DILEMMA</span></a>
+        <a class="brand" href="#handbook">{{BRANDTOP}}<br><span>{{BRANDBOTTOM}}</span></a>
         <p class="edition">C16 restoration · Complete documentation</p>
         <label for="search">Find a document</label>
         <input id="search" type="search" placeholder="Search all chapters…" autocomplete="off">
@@ -23,11 +23,11 @@
     <main id="handbook">
         <header class="hero">
             <p class="eyebrow">THE RESTORATION HANDBOOK</p>
-            <h1>Dork's Dilemma</h1>
+            <h1>{{TITLE}}</h1>
             <p class="lead">The game, its history, and the code behind it.</p>
-            <p>One reading copy assembled from {{COUNT}} repository documents, with the artwork, reviews, graphics sheets, diagrams, and code reference included.</p>
+            <p>One reading copy assembled from {{COUNT}} repository documents, with {{INCLUDES}} included.</p>
             <p class="generated-note">Generated from the Markdown sources. Edit those files and regenerate this handbook. Source revision <code>{{DIGEST}}</code>.</p>
-            <p class="reading-note">Read offline in a browser. Click an image to enlarge it. Links to included documents stay within this page; source-file links require the repository checkout. Historical reports are collapsed and labelled.</p>
+            <p class="reading-note">Read offline in a browser. Click an image to enlarge it. Links to included documents stay within this page; source-file links require the repository checkout.</p>
         </header>
         <p id="no-results" hidden>No documents match this search.</p>
         {{BODY}}

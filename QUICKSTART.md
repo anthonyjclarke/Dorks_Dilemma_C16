@@ -2,36 +2,38 @@
 
 ## Build
 
-Install Python 3.9 or later and cc65 (`ca65` and `ld65`). On macOS:
+Install Python 3.9+, cc65, and VICE. From the project folder:
 
 ```sh
-brew install cc65 vice
 ./build.sh
+python3 scripts/run_vice.py
 ```
 
-The result is `build/dorks.prg`. The build checks that it matches the surviving reference byte for byte.
+The output is `build/dorks.prg`, and the build checks that it matches the surviving reference byte for byte. The game loads at `$1000` and enters at `$1960` (`SYS 6496`). Use the launcher, because the rebuilt PRG has no BASIC stub.
 
 ---
 
-## Run
+## PlatformIO and VS Code
 
-```sh
-scripts/run_vice.sh build/dorks.prg
-```
-
-The launcher uses a PAL C16 with 16 KB RAM, loads the PRG, and starts at `$1960`. The source uses `Z`, `X`, `;`, `/`, and Space for controls. How those map to host keys hasn't been checked by hand.
-
----
-
-## PlatformIO and Checks
+Open this folder in VS Code, install the recommended PlatformIO extension and run the default build task. From a PlatformIO terminal:
 
 ```sh
 pio run -e c16
-pio run -e c16 --target upload
-make test
-python3 scripts/verify_vice.py
+pio run -e c16 -t upload
 ```
 
-The upload target launches VICE with `build/platformio/c16/dorks.prg`. The emulator check confirms the game reaches gameplay, using scripted input. It isn't a complete play-through.
+`pio run -e c16_debug` gives the same game bytes plus debug files. Outputs land in `build/platformio/<environment>/`.
 
-[Restoration Status](docs/RESTORATION_STATUS.md) has the evidence, and [Source to VICE](docs/SOURCE_TO_VICE.md) describes the process.
+---
+
+## Controls and Checks
+
+The source maps `Z`, `X`, `;`, `/` and Space to left, right, up, down and fire/start. `F1` selects keyboard or joystick and `F2` selects sound. I haven't checked the host-key mapping by hand yet.
+
+```sh
+make test
+make verify
+make run-original
+```
+
+See [Build and Run](docs/BUILD_AND_RUN.md) and [Testing](TESTING.md) for details.

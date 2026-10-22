@@ -28,4 +28,7 @@ def launch(program):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('program', nargs='?', type=Path, default=ROOT / 'build/dorks.prg')
-    launch(parser.parse_args().program)
+    parser.add_argument('--original', action='store_true',
+                        help='run the surviving 1992 DORKSDIL.BIN instead of the rebuild')
+    args = parser.parse_args()
+    launch(ROOT / 'Original Source Recovered/1992/DORKSDIL.BIN' if args.original else args.program)

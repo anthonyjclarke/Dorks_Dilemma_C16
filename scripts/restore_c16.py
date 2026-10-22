@@ -13,7 +13,7 @@ from d64_image import D64Image
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGE = ROOT / "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64"
+IMAGE = ROOT / "Original Source Recovered/2026/Dorks-Dilemma-C16.d64"
 FALLBACKS = {
     "RASTER-ROUTINES": "RASTERRO.TXT",
     "ALIENS-MEGA/CODE": "ALIENSME.TXT",
@@ -57,7 +57,7 @@ def prepare_sources(build):
             sources[file.name] = file.data.decode("ascii").splitlines()
     for name, filename in FALLBACKS.items():
         if name not in sources:
-            path = ROOT / "Original_Files" / filename
+            path = ROOT / "Original Source Recovered/1992" / filename
             # Earlier PC text exports changed source case. Restore the upper-case
             # Commodore source representation, including literal text bytes.
             sources[name] = path.read_text().upper().splitlines()
@@ -198,7 +198,7 @@ def build_game(build):
               'standalone_charset_differences': sum(a != b for a, b in zip(charset, disk['CHARS'][2:])),
               'different_bytes': len(changes),
               'first_differences': [f'${i - 2 + 0x1000:04X}' for i in changes[:20]],
-              'reference_matches_earlier_copy': reference == (ROOT / 'Original_Files/DORKSDIL.BIN').read_bytes()}
+              'reference_matches_earlier_copy': reference == (ROOT / 'Original Source Recovered/1992/DORKSDIL.BIN').read_bytes()}
     (build / 'comparison.json').write_text(json.dumps(report, indent=2) + '\n')
     print(json.dumps(report, indent=2))
     if len(output.read_bytes()) != len(reference) or changes:

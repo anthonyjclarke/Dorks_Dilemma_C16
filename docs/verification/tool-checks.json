@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-23",
+  "timezone": "Australia/Sydney",
+  "regression_tests_passed": 7,
+  "direct_platformio_release_debug_identical": true,
+  "platformio_core": "6.1.19",
+  "ca65_reported_version": "V2.18",
+  "ld65_reported_version": "V2.18",
+  "vice_version": "3.10",
+  "output_sha256": "3c6f6426b93862de9bd836842f1ffc0bc46f19056e2fc0706ca0da8037a7ce05",
+  "github_workflow": "added 23-10-2026; not yet executed on GitHub",
+  "manual_keyboard_audio_and_full_playthrough": "not verified"
+}

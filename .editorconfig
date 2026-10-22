@@ -1,47 +1,34 @@
-# EditorConfig for Dork's Dilemma project
-# https://editorconfig.org
-
 root = true
 
-# Default settings
 [*]
 charset = utf-8
 end_of_line = lf
+indent_style = space
+indent_size = 4
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-# Assembly files (.s, .asm)
-[*.{s,asm,inc}]
-indent_style = tab
-indent_size = 8
-max_line_length = 80
-
-# Python scripts
-[*.py]
-indent_style = space
-indent_size = 4
-
-# Shell scripts
-[*.sh]
-indent_style = space
-indent_size = 2
-
-# JSON files
-[*.json]
-indent_style = space
-indent_size = 4
-
-# YAML/INI files
-[*.{yml,yaml,ini}]
-indent_style = space
-indent_size = 2
-
-# Markdown files
 [*.md]
-indent_style = space
-indent_size = 4
 trim_trailing_whitespace = false
 
-# Makefiles always use tabs
 [Makefile]
 indent_style = tab
+
+# Preserved inputs: editors must never change their bytes.
+[Original Source Recovered/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+
+[Original Artifacts/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+
+[Other Versions/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset

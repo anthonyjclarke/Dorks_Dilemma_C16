@@ -14,9 +14,9 @@ dependencies = [
     root / "scripts/restore_c16.py",
     root / "scripts/d64_image.py",
     root / "config/c16.cfg",
-    root / "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
-    root / "Original_Files/DORKSDIL.BIN",
-] + [root / "Original_Files" / name for name in
+    root / "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
+    root / "Original Source Recovered/1992/DORKSDIL.BIN",
+] + [root / "Original Source Recovered/1992" / name for name in
      ("ALIENCHE.TXT", "ALIENSME.TXT", "RASTERRO.TXT", "WHOOPPEE.TXT")]
 
 

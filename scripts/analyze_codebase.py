@@ -139,13 +139,13 @@ def analyze(build, output):
     if manifest['image_sha256'] != hashlib.sha256(IMAGE.read_bytes()).hexdigest():
         raise ValueError('Build manifest is stale; rebuild first')
     for entry in manifest['files']:
-        raw = (ROOT / entry['source']).read_bytes() if entry['source'].startswith('Original_Files/') else disk[entry['name']].data
+        raw = (ROOT / entry['source']).read_bytes() if entry['source'].startswith('Original Source Recovered/1992/') else disk[entry['name']].data
         if hashlib.sha256(raw).hexdigest() != entry['sha256']:
             raise ValueError(f'Stale input: {entry["name"]}; rebuild first')
     sources = {name: file.data.decode('ascii').splitlines() for name, file in disk.items()
                if file.kind == 'SEQ' and name not in ('OBJ', 'O.DES')}
     for name, filename in FALLBACKS.items():
-        sources.setdefault(name, (ROOT / 'Original_Files' / filename).read_text().upper().splitlines())
+        sources.setdefault(name, (ROOT / 'Original Source Recovered/1992' / filename).read_text().upper().splitlines())
     active = list(dict.fromkeys(name for name, _, _ in flatten(sources)))
     program = (build / 'dorks.prg').read_bytes()
     code = (build / 'recovered-code.bin').read_bytes()
@@ -186,7 +186,7 @@ def analyze(build, output):
                                   'operation': parts[0], 'operand': parts[1]})
         entry = provenance[name]
         modules.append({'name': name, 'source': entry['source'],
-                        'fallback': entry['source'].startswith('Original_Files/'),
+                        'fallback': entry['source'].startswith('Original Source Recovered/1992/'),
                         'raw_bytes': len(disk[name].data) if name in disk else (ROOT / entry['source']).stat().st_size,
                         'logical_lines': len(sources[name]), 'instruction_lines': instruction_lines,
                         'program_region_bytes': sizes[name]})

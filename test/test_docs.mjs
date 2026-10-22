@@ -12,7 +12,8 @@ before(() => {
     fs.cpSync(path.join(ROOT, 'scripts'), path.join(root, 'scripts'), { recursive: true });
     fs.mkdirSync(path.join(root, 'docs'), { recursive: true });
     fs.writeFileSync(path.join(root, 'docs/handbook.json'), JSON.stringify({
-        output: 'docs/DORKS_DILEMMA.html', groups: [
+        output: 'docs/DORKS_DILEMMA.html', title: 'Test Game', brand: ['TEST', 'GAME'],
+        description: 'Test handbook.', includes: 'test images', groups: [
             { id: 'guide', label: 'Guide', sources: ['README.md', 'docs/second.md'] },
             { id: 'history', label: 'History', historical: true, sources: [], discover: 'docs/*.md' },
         ],
@@ -89,16 +90,18 @@ test('escapes raw HTML from document content', () => {
 
 test('the complete repository handbook builds with all current links resolved', () => {
     const { html, sources, warnings } = buildHandbook();
-    assert(sources.includes('docs/PUBLICATION_ARCHIVE.md'));
+    assert(sources.includes('docs/PORTING_GUIDE.md'));
+    assert(sources.includes('docs/GRAPHICS.md'));
+    assert(sources.includes('docs/GREMLIN_ARCHIVE.md'));
+    assert.match(html, /<title>Dork&#39;s Dilemma – Complete Documentation<\/title>/);
     assert(sources.includes('CODEBASE_ANALYSIS.md'));
     assert(sources.includes('docs/analysis/CODE_REFERENCE.md'));
     assert.match(html, /data:image\/svg\+xml;base64/);
     assert.match(html, /class="mermaid"/);
-    assert.match(html, /data:image\/jpeg;base64/);
     assert.match(html, /<img class="badge" src="data:image\/svg\+xml;base64/);
-    const config = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/handbook.json'), 'utf8'));
-    const current = new Set(config.groups.filter(group => !group.historical).flatMap(group => group.sources));
-    assert(warnings.every(warning => !current.has(warning.split(':')[0])));
+    assert.match(html, /data:image\/jpeg;base64/);
+    assert.equal(warnings.length, 0);
+    assert(warnings.every(warning => !warning.startsWith('CODEBASE_ANALYSIS.md:')));
     assert.equal((html.match(/class="document(?: historical)?"/g) || []).length, sources.length);
 });
 

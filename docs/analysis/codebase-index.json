@@ -54,7 +54,7 @@
   "modules": [
     {
       "name": "ROOMS OF PERIL",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1921,
       "logical_lines": 97,
@@ -63,7 +63,7 @@
     },
     {
       "name": "MAIN-VARS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 472,
       "logical_lines": 46,
@@ -72,7 +72,7 @@
     },
     {
       "name": "MACROS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 160,
       "logical_lines": 33,
@@ -81,7 +81,7 @@
     },
     {
       "name": "VARS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 4273,
       "logical_lines": 199,
@@ -90,7 +90,7 @@
     },
     {
       "name": "EXTRA-MEMORY",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 749,
       "logical_lines": 71,
@@ -99,7 +99,7 @@
     },
     {
       "name": "PLAY-GAME",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1420,
       "logical_lines": 125,
@@ -108,7 +108,7 @@
     },
     {
       "name": "JOYSTIK",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 668,
       "logical_lines": 89,
@@ -117,7 +117,7 @@
     },
     {
       "name": "IRQ",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1008,
       "logical_lines": 128,
@@ -126,7 +126,7 @@
     },
     {
       "name": "RASTER-ROUTINES",
-      "source": "Original_Files/RASTERRO.TXT",
+      "source": "Original Source Recovered/1992/RASTERRO.TXT",
       "fallback": true,
       "raw_bytes": 926,
       "logical_lines": 72,
@@ -135,7 +135,7 @@
     },
     {
       "name": "UTILS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1408,
       "logical_lines": 182,
@@ -144,7 +144,7 @@
     },
     {
       "name": "KEY-SCAN",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 663,
       "logical_lines": 75,
@@ -153,7 +153,7 @@
     },
     {
       "name": "MESSAGE-STUFF",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 434,
       "logical_lines": 69,
@@ -162,7 +162,7 @@
     },
     {
       "name": "SETUP",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 519,
       "logical_lines": 52,
@@ -171,7 +171,7 @@
     },
     {
       "name": "DECODER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2976,
       "logical_lines": 340,
@@ -180,7 +180,7 @@
     },
     {
       "name": "MOVE-PIXEL",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 4079,
       "logical_lines": 546,
@@ -189,7 +189,7 @@
     },
     {
       "name": "CHECK-MAN",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 987,
       "logical_lines": 118,
@@ -198,7 +198,7 @@
     },
     {
       "name": "CHANGE-ROOM",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2262,
       "logical_lines": 223,
@@ -207,7 +207,7 @@
     },
     {
       "name": "TABLES",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 228,
       "logical_lines": 25,
@@ -216,7 +216,7 @@
     },
     {
       "name": "RADAR-SCANNER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1044,
       "logical_lines": 130,
@@ -225,7 +225,7 @@
     },
     {
       "name": "INIT-ROOMS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1056,
       "logical_lines": 132,
@@ -234,7 +234,7 @@
     },
     {
       "name": "DUMPER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1699,
       "logical_lines": 186,
@@ -243,7 +243,7 @@
     },
     {
       "name": "ALIENS-MEGA/CODE",
-      "source": "Original_Files/ALIENSME.TXT",
+      "source": "Original Source Recovered/1992/ALIENSME.TXT",
       "fallback": true,
       "raw_bytes": 3188,
       "logical_lines": 356,
@@ -252,7 +252,7 @@
     },
     {
       "name": "ALIEN-CHEK/PRINT",
-      "source": "Original_Files/ALIENCHE.TXT",
+      "source": "Original Source Recovered/1992/ALIENCHE.TXT",
       "fallback": true,
       "raw_bytes": 2816,
       "logical_lines": 303,
@@ -261,7 +261,7 @@
     },
     {
       "name": "INKEY",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 762,
       "logical_lines": 67,
@@ -270,7 +270,7 @@
     },
     {
       "name": "ANIMATE-CHARS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 3551,
       "logical_lines": 336,
@@ -279,7 +279,7 @@
     },
     {
       "name": "BORDER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 666,
       "logical_lines": 84,
@@ -288,7 +288,7 @@
     },
     {
       "name": "JIGSAW-CODE",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2393,
       "logical_lines": 277,
@@ -297,7 +297,7 @@
     },
     {
       "name": "BOMB-CODE",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 3474,
       "logical_lines": 362,
@@ -306,7 +306,7 @@
     },
     {
       "name": "FILLER-BOMB",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2470,
       "logical_lines": 327,
@@ -315,7 +315,7 @@
     },
     {
       "name": "EDIT-JIGSAW",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2604,
       "logical_lines": 272,
@@ -324,7 +324,7 @@
     },
     {
       "name": "COMMAND",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 403,
       "logical_lines": 52,
@@ -333,7 +333,7 @@
     },
     {
       "name": "SCATTER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 959,
       "logical_lines": 108,
@@ -342,7 +342,7 @@
     },
     {
       "name": "HALL-OF-FAME",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 282,
       "logical_lines": 43,
@@ -351,7 +351,7 @@
     },
     {
       "name": "MAGNIFICENT",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 847,
       "logical_lines": 81,
@@ -360,7 +360,7 @@
     },
     {
       "name": "HIGH-PRINT",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2947,
       "logical_lines": 358,
@@ -369,7 +369,7 @@
     },
     {
       "name": "SCREEN-INIT",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1455,
       "logical_lines": 154,
@@ -378,7 +378,7 @@
     },
     {
       "name": "VARIETY",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 3407,
       "logical_lines": 192,
@@ -387,7 +387,7 @@
     },
     {
       "name": "DEATH-CODE",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2862,
       "logical_lines": 347,
@@ -396,7 +396,7 @@
     },
     {
       "name": "GAME-OVER",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 808,
       "logical_lines": 83,
@@ -405,7 +405,7 @@
     },
     {
       "name": "ALTERABLES",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1125,
       "logical_lines": 99,
@@ -414,7 +414,7 @@
     },
     {
       "name": "TITLE-WORKS",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 657,
       "logical_lines": 98,
@@ -423,7 +423,7 @@
     },
     {
       "name": "SCORE-ROUTINES",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 606,
       "logical_lines": 68,
@@ -432,7 +432,7 @@
     },
     {
       "name": "WORK-HIGH",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 2867,
       "logical_lines": 305,
@@ -441,7 +441,7 @@
     },
     {
       "name": "KILLER-CODE",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1585,
       "logical_lines": 181,
@@ -450,7 +450,7 @@
     },
     {
       "name": "LEVEL-INCREASE",
-      "source": "Dorks-Dilemma-C16-2026-FullDiskCopy/Dorks-Dilemma-C16.d64",
+      "source": "Original Source Recovered/2026/Dorks-Dilemma-C16.d64",
       "fallback": false,
       "raw_bytes": 1041,
       "logical_lines": 93,
@@ -459,7 +459,7 @@
     },
     {
       "name": "WHOOPPEE-MESSAGE",
-      "source": "Original_Files/WHOOPPEE.TXT",
+      "source": "Original Source Recovered/1992/WHOOPPEE.TXT",
       "fallback": true,
       "raw_bytes": 227,
       "logical_lines": 14,

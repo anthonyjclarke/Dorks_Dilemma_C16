@@ -1,42 +1,43 @@
 {
     "output": "docs/DORKS_DILEMMA.html",
+    "title": "Dork's Dilemma",
+    "brand": [
+        "DORK'S",
+        "DILEMMA"
+    ],
+    "description": "Dork's Dilemma C16 restoration: history, packaging, reviews, build instructions, validation, source analysis, graphics, porting and reference.",
+    "includes": "the artwork, reviews, graphics sheets, diagrams and code reference",
     "groups": [
         {
             "id": "guide",
             "label": "Project guide",
             "sources": [
                 "README.md",
-                "docs/DEVELOPMENT_HISTORY.md",
+                "docs/HISTORY_AND_CREDITS.md",
                 "docs/GREMLIN_ARCHIVE.md",
-                "docs/PUBLICATION_ARCHIVE.md",
+                "docs/ARTIFACTS.md",
                 "QUICKSTART.md",
-                "docs/SOURCE_TO_VICE.md",
-                "docs/PLATFORMIO_GUIDE.md",
-                "docs/RESTORATION_STATUS.md",
+                "docs/BUILD_AND_RUN.md",
                 "TESTING.md",
+                "docs/SOURCE_AND_VALIDATION.md",
                 "CODEBASE_ANALYSIS.md",
-                "docs/RECOVERED_DISK_CONTENTS.md"
+                "docs/GRAPHICS.md",
+                "docs/PORTING_GUIDE.md"
             ]
         },
         {
             "id": "reference",
             "label": "Reference and maintenance",
             "sources": [
-                "PROJECT_STATUS.md",
+                "docs/SOURCE_INVENTORY.md",
+                "RIGHTS.md",
                 "CHANGELOG.md",
-                "docs/README.md",
+                "docs/SHARING_ON_GITHUB.md",
                 "src/README.md",
                 "docs/analysis/README.md",
                 "docs/HTML_DOCUMENTATION.md",
                 "docs/analysis/CODE_REFERENCE.md"
             ]
-        },
-        {
-            "id": "history",
-            "label": "Historical investigation reports",
-            "historical": true,
-            "sources": ["PROJECT_SETUP.md"],
-            "discover": "docs/*.md"
         }
     ]
 }

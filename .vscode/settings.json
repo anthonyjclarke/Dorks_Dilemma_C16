@@ -1,66 +1,26 @@
 {
-    // Editor settings for assembly files
-    "[asm]": {
-        "editor.tabSize": 8,
-        "editor.insertSpaces": false,
-        "editor.detectIndentation": false,
-        "editor.rulers": [80],
-        "editor.wordWrap": "off"
-    },
-
-    // File associations
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
     "files.associations": {
-        "*.s": "asm",
-        "*.asm": "asm",
-        "*.inc": "asm",
+        "*.s": "ca65",
+        "*.SEQ": "ca65",
+        "*.seq": "ca65",
         "*.cfg": "ini",
-        "platformio.ini": "ini"
+        "*.asm": "ca65",
+        "*.inc": "ca65"
     },
-
-    // Exclude build artifacts from search
-    "search.exclude": {
-        "**/build": true,
-        "**/.pio": true,
-        "**/*.prg": true,
-        "**/*.o": true,
-        "**/*.lst": true
-    },
-
-    // File explorer settings
     "files.exclude": {
         "**/.DS_Store": true,
-        "**/__pycache__": true,
-        "**/*.pyc": true
+        "**/__pycache__": true
     },
-
-    // PlatformIO settings
+    "search.exclude": {
+        "build/**": true,
+        ".pio/**": true
+    },
+    "files.trimTrailingWhitespace": false,
+    "files.insertFinalNewline": false,
     "platformio-ide.useBuiltinPIOCore": true,
-    "platformio-ide.activateOnlyOnPlatformIOProject": false,
-    "platformio-ide.autoRebuildAutocompleteIndex": true,
-
-    // Terminal settings
     "terminal.integrated.env.osx": {
-        "PATH": "/usr/local/bin:/opt/homebrew/bin:${env:PATH}"
-    },
-
-    // Code formatting
-    "editor.formatOnSave": false,
-    "editor.trimAutoWhitespace": true,
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-
-    // Git settings
-    "git.ignoreLimitWarning": true,
-
-    // Breadcrumbs
-    "breadcrumbs.enabled": true,
-
-    // Minimap
-    "editor.minimap.enabled": true,
-    "editor.minimap.maxColumn": 80,
-
-    // Custom color for assembly comments
-    "editor.tokenColorCustomizations": {
-        "comments": "#6A9955"
+        "PATH": "/opt/homebrew/bin:/usr/local/bin:${env:PATH}"
     }
 }

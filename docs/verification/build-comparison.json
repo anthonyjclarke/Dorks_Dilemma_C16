@@ -1,0 +1,15 @@
+{
+  "load_address": "$1000",
+  "entry_address": "$1960",
+  "sha256": "3c6f6426b93862de9bd836842f1ffc0bc46f19056e2fc0706ca0da8037a7ce05",
+  "reference": "Original Source Recovered/1992/DORKSDIL.BIN",
+  "reference_sha256": "3c6f6426b93862de9bd836842f1ffc0bc46f19056e2fc0706ca0da8037a7ce05",
+  "code_bytes": 7840,
+  "output_bytes": 12290,
+  "code_matches_reference": true,
+  "charset_source": "DORK'S DILEMMA: $3800-$3FFF (graphics data only)",
+  "standalone_charset_differences": 142,
+  "different_bytes": 0,
+  "first_differences": [],
+  "reference_matches_earlier_copy": true
+}

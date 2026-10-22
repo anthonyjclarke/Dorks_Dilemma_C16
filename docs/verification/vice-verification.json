@@ -1,0 +1,10 @@
+{
+  "emulator": "VICE xplus4",
+  "model": "c16pal",
+  "ram_kib": 16,
+  "gameplay_loop_reached": true,
+  "title_flag": 0,
+  "lives": 3,
+  "input": "scripted JFIRE flag at the original fire test",
+  "manual_keyboard_and_full_playthrough": "not verified"
+}
