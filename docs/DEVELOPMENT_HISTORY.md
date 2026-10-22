@@ -64,6 +64,12 @@ Whether `Original_Files/DORKSDIL.BIN` is a release or a development build is unk
 
 ---
 
+## Gremlin Archive and the Book
+
+Mark Hardisty's book *A Gremlin in the Works* tells the Micro Projects story, and his Gremlin Graphics Archive hosts my 1992 export of the development disks. [Gremlin Archive and the Book](GREMLIN_ARCHIVE.md) covers both. It also records that `Original_Files/` is the archive's `DISK5`, and that the loose files in the 2026 disk copy are its C64 disk, `DISK1B`.
+
+---
+
 ## Surviving Development Disks
 
 ![Surviving Micro-Projects development disks, photographed by me](images/micro-projects-development-disks.jpg)

@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.0] 22-10-2026
+
+Documentation release. It brings the README, the HTML handbook and its tests in line with my Tycoon Tex and Xargon Wars restorations. The game build is unchanged and still matches `DORKSDIL.BIN` byte for byte.
+
+### Added
+
+- `docs/GREMLIN_ARCHIVE.md`, a chapter on Mark Hardisty's book *A Gremlin in the Works* and the Gremlin Graphics Archive, shared with my other Micro Projects reconstructions. Its project section compares this project's files with the archive's `Old-Development-Disks.zip` by CRC-32 and size: all 71 files in `Original_Files/` match `DISK5.ZIP`, 60 of the 66 files in `Dorks-Dilemma-C16.d64` match `DISK5`, and 66 of the 72 loose files in the 2026 disk copy match the C64 disk, `DISK1B.ZIP`. The others are BASIC programs, exported as listings, and the truncated `FILLER-BOMB`.
+- A short section in `docs/DEVELOPMENT_HISTORY.md` linking the chapter.
+- Seven local SVG badges in `docs/images/badges/` (release, platform, byte match, toolchain, PlatformIO, emulator, status), shown under the README title.
+- Two documentation tests: the saved handbook is current, and the full handbook has its Mermaid diagram, JPEG images and badges, with warnings only from historical reports.
+
+### Changed
+
+- The README follows the same section order as my other restorations: Verified Build, Build and Run, Preserved Inputs, History and Recovery Background, Learning, Modification, and Ports, and Tests and Sharing.
+- `scripts/build_docs.mjs` and `scripts/docs/handbook.css` match the Tycoon Tex generator: GIF images are embedded, and badge images render inline in a row.
+- The changelog is a chapter in the HTML handbook's reference group, as in my other restorations.
+- Small wording edits in `docs/HTML_DOCUMENTATION.md`, which now mentions the badge files.
+
 ## [1.0] 20-10-2026
 
 ### Added

@@ -7,6 +7,7 @@
             "sources": [
                 "README.md",
                 "docs/DEVELOPMENT_HISTORY.md",
+                "docs/GREMLIN_ARCHIVE.md",
                 "docs/PUBLICATION_ARCHIVE.md",
                 "QUICKSTART.md",
                 "docs/SOURCE_TO_VICE.md",
@@ -22,6 +23,7 @@
             "label": "Reference and maintenance",
             "sources": [
                 "PROJECT_STATUS.md",
+                "CHANGELOG.md",
                 "docs/README.md",
                 "src/README.md",
                 "docs/analysis/README.md",
